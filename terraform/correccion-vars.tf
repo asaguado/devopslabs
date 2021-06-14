@@ -1,13 +1,13 @@
 variable "location" {
   type = string
   description = "Región de Azure donde crearemos la infraestructura"
-  default = "<YOUR REGION>" 
+  default = "westeurope" 
 }
 
 variable "storage_account" {
   type = string
   description = "Nombre para la storage account"
-  default = "<STORAGE ACCOUNT NAME>"
+  default = "unir"
 }
 
 variable "public_key_path" {
