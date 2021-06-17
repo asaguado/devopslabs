@@ -1,4 +1,6 @@
-# hosts
+# localhosts
+# Inventario utilizando 2 servidores de 2 cpu y 2Gb ram en 
+# máquinas CentOS8 virtualizadas con VirtualBox en local
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=ansible
