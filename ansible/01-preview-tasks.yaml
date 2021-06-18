@@ -12,13 +12,12 @@
 # dnf install nfs-utils nfs4-acl-tools wget -y
 
 - name: Preview task in all nodes (master and workers)
-  connection: ansible.netcommon.network_cli
   gather_facts: false
   hosts: all
   tasks:
     - name: Display the config
       debug:
-        msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"
+        msg: "Hello world!"
     - name: Set timezone to Europe/Madrid
       timezone:
         name: Europe/Madrid
