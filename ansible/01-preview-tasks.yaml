@@ -18,6 +18,24 @@
     - name: Display the config
       debug:
         msg: "Hello world!"
+
     - name: Set timezone to Europe/Madrid
       timezone:
         name: Europe/Madrid
+
+    - name: Install the latest version of Chrony
+        dnf:
+          name: chrony
+          state: latest
+
+    - name: Make sure a chrony service unit is enabled and running
+        ansible.builtin.systemd:
+          name: chrony
+          enabled: yes          
+          state: started
+    
+    - name: Enable ntp
+        command: /usr/bin/timedatectl set-ntp true
+        when: "'Network time on: no' in timedatectl_result.stdout"
+        become: yes
+
