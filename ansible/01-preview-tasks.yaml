@@ -40,3 +40,16 @@
       command: /usr/bin/timedatectl set-ntp true
       become: yes
 
+    - name: Deactivate SELinux
+      command: /usr/bin/sed -i s/=enforcing/=disabled/g /etc/selinux/config
+      become: yes
+
+    - name: Install NFS packages and wget package
+      dnf:
+        name: 
+          - nfs-utils
+          - nfs4-acl-tools
+          - wget
+        state: present
+      become: yes    
+
