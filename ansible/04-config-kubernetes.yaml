@@ -1,0 +1,3 @@
+# Configurando kubernetes en el nodo master, que se realizará solo en el nodo master.local
+# Añadir también a este playbook las tareas que aparecen en "Creamos un usuario administrador"
+# que se encuentra al final del procedimiento.
