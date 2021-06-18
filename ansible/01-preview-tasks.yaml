@@ -38,6 +38,5 @@
     
     - name: Enable ntp
       command: /usr/bin/timedatectl set-ntp true
-      when: "'Network time on: no' in timedatectl_result.stdout"
       become: yes
 
