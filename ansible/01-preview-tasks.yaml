@@ -27,12 +27,14 @@
       dnf:
         name: chrony
         state: latest
+      become: yes
 
     - name: Make sure a chrony service unit is enabled and running
       ansible.builtin.systemd:
         name: chrony
         enabled: yes          
         state: started
+      become: yes
     
     - name: Enable ntp
       command: /usr/bin/timedatectl set-ntp true
