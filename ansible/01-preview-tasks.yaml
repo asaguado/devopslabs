@@ -33,7 +33,7 @@
       ansible.builtin.systemd:
         name: chrony
         state: started        
-        enabled: yes          
+        #enabled: yes
       become: yes
     
     - name: Enable ntp
