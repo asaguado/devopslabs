@@ -15,9 +15,6 @@
   gather_facts: false
   hosts: all
   tasks:
-    - name: Display the config
-      debug:
-        msg: "Hello world!"
 
     - name: Set timezone to Europe/Madrid
       timezone:
