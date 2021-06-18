@@ -1,2 +1,6 @@
 # En la instalación del servidor NFS en local no será necesario añadir un disco y empezaremos a partir de
 # dnf install nfs-utils net-tools -y
+
+name: Install NFS
+  package: name=nfs-utils state=present
+  become: yes
