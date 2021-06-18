@@ -1,16 +1,6 @@
 # Tareas previas de configuración, estas tareas se han de realizar en todos los nodos.
-# > Configuración de la sincronización horaria:
-# timedatectl set-timezone Europe/Madrid
-# dnf install chrony -y
-# systemctl enable chronyd
-# systemctl start chronyd
-# timedatectl set-ntp true
-# > Desativamos SELinux ya que no lo vamos a utilizar con kubernetes
-# sed -i s/=enforcing/=disabled/g /etc/selinux/config
-# > reboot?
-# > Instalamos los siguientes paquetes:
-# dnf install nfs-utils nfs4-acl-tools wget -y
 
+# Preview task in all nodes (master and workers)
 - name: Preview task in all nodes (master and workers)
   gather_facts: false
   hosts: all

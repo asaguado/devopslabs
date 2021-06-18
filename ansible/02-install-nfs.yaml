@@ -1,6 +1,17 @@
 # En la instalación del servidor NFS en local no será necesario añadir un disco y empezaremos a partir de
 # dnf install nfs-utils net-tools -y
 
-name: Install NFS
-  package: name=nfs-utils state=present
-  become: yes
+# Server NFS installation (only in master)
+- name: Server NFS installation (only in master)
+  gather_facts: false
+  hosts: all
+  tasks:
+
+    # Install the latest version of 'nfs-utils' and 'net-tools' package
+    - name: Install the latest version of Chrony
+      dnf:
+        name: 
+          - nfs-utils
+          - net-tools
+        state: latest
+      become: yes  
