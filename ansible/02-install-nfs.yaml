@@ -1,17 +1,25 @@
-# En la instalación del servidor NFS en local no será necesario añadir un disco y empezaremos a partir de
-# dnf install nfs-utils net-tools -y
+# En la instalación del servidor NFS en local no será necesario añadir un disco
 
-# Server NFS installation (only in master)
+# NFS Server installation (only in master)
 - name: Server NFS installation (only in master)
   gather_facts: false
   hosts: all
   tasks:
 
     # Install the latest version of 'nfs-utils' and 'net-tools' package
-    - name: Install the latest version of Chrony
+    # Instalamos los paquetes de NFS y arrancamos el servicio:
+    - name: Install the latest version of 'nfs-utils' and 'net-tools'
       dnf:
         name: 
           - nfs-utils
           - net-tools
         state: latest
-      become: yes  
+      become: yes
+
+    # Make sure a nfs-server service unit is enabled and running
+    - name: Make sure a nfs-server service unit is enabled and running
+      ansible.builtin.systemd:
+        name: nfs-server
+        state: started        
+        enabled: yes
+      become: yes       
