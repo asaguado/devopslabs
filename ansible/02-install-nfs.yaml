@@ -38,11 +38,17 @@
         enabled: yes
       become: yes
 
-    - name: Config the share access to the NFS
+    # Copy exports file to the system and config the share access to the NFS
+    - name: Copy exports file to the system and config the share access to the NFS
       copy:
         src: files/exports.txt
         dest: "/etc/exports"
       become: yes  
+
+    # Create a 'mount point' in '/srv/nfs' folder
+    - name: Create a 'mount point' in '/srv/nfs' folder
+      command: /usr/bin/mkdir /srv/nfs
+      become: yes      
 
     # Read '/etc/exports' and apply the new configuration
     - name: Read '/etc/exports' and apply the new configuration
