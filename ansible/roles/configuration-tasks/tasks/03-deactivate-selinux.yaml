@@ -2,5 +2,7 @@
 
 # We discourage SELinux since we are not going to use it with kubernetes
 - name: deactivate SELinux
-  command: /usr/bin/sed -i s/=enforcing/=disabled/g /etc/selinux/config
+  #command: /usr/bin/sed -i s/=enforcing/=disabled/g /etc/selinux/config
+  ansible.posix.selinux:
+    state: disabled
   become: yes  

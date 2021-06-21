@@ -4,4 +4,3 @@
 - include_tasks: 02-sync-datetime.yaml
 - include_tasks: 03-deactivate-selinux.yaml
 - include_tasks: 04-install.yaml
-- include_tasks: 05-reboot.yaml
