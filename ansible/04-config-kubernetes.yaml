@@ -18,17 +18,16 @@
     # We configure the firewall to access the kubernetes services
     - name: Configure the firewall to access the kubernetes services
       firewalld:
-        port: {{ ports }}
+        port: "{{ item }}"
         permanent: yes
         state: enabled
-      vars:
-        ports:
-          - 6443/tcp
-          - 2379-2380/tcp
-          - 10250/tcp
-          - 10251/tcp
-          - 10252/tcp
-          - 10255/tcp
+      with_items:        
+        - 6443/tcp
+        - 2379-2380/tcp
+        - 10250/tcp
+        - 10251/tcp
+        - 10252/tcp
+        - 10255/tcp
       become: yes
 
     # Reload 'firewalld' service
