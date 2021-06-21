@@ -104,9 +104,9 @@
         mode: 0755
     
     - name: copy admin.conf to root user kube config
+      become: yes    
       copy:
         src: /etc/kubernetes/admin.conf
         dest: $HOME/.kube/config
-        remote_src: yes
         owner: root
         group: root
