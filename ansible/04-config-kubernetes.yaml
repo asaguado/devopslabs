@@ -108,5 +108,6 @@
       copy:
         src: /etc/kubernetes/admin.conf
         dest: $HOME/.kube/config
+        remote_src: yes
         owner: root
         group: root
