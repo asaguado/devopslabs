@@ -118,7 +118,7 @@
     - name: Install these packages - kubelet kubeadm kubectl
       dnf:
         name: "{{ packages }}"
-        state: latest
+        state: present
         disable_excludes: all
         exclude: kubernetes
       vars:
