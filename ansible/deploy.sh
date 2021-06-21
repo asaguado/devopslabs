@@ -1,5 +1,6 @@
 #!/bin/bash
 # Automatizando el despliegue de kubernetes (Ansible)
+# https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04-es
 # 
 # añadir tantas líneas como sean necesarias para el correcto despligue
 # ansible-playbook -i hosts -l XXXX playbook
