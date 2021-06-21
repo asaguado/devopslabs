@@ -1,6 +1,6 @@
 ---
 
-time_zone: ['Europe/Madrid']
+time_zone: 'Europe/Madrid'
 
 rpms_chrony: ['chrony']
 

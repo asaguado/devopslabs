@@ -2,5 +2,6 @@
 
 # update installed packages
 - name: update installed packages
-  command: /usr/bin/dnf update -y
-  become: yes
+  dnf:
+    update_cache: yes
+  become: yes    
