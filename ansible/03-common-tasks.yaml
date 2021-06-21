@@ -20,8 +20,8 @@
       command: /usr/sbin/modprobe br_netfilter
       become: yes
 
-   # Add permanent masquerade
-   - name: Add permanent masquerade
+  # Add permanent masquerade
+    - name: Add permanent masquerade
       firewalld:
         masquerade: yes
         state: enabled        
