@@ -1,3 +1,38 @@
 # Configurando kubernetes en el nodo master, que se realizará solo en el nodo master.local
 # Añadir también a este playbook las tareas que aparecen en "Creamos un usuario administrador"
 # que se encuentra al final del procedimiento.
+# firewall-cmd --permanent --add-port=6443/tcp
+# firewall-cmd --permanent --add-port=2379-2380/tcp
+# firewall-cmd --permanent --add-port=10250/tcp
+# firewall-cmd --permanent --add-port=10251/tcp
+# firewall-cmd --permanent --add-port=10252/tcp
+# firewall-cmd --permanent --add-port=10255/tcp
+# firewall-cmd --reload
+
+# Configuring kubernetes on the master node
+- name: NFS Server installation (only in master)
+  gather_facts: false
+  hosts: master
+  tasks:
+
+    # We configure the firewall to access the kubernetes services
+    - name: Configure the firewall to access the kubernetes services
+      firewalld:
+        port: "{{ ports }}"
+        permanent: yes
+      vars:
+        ports:
+          - 6443/tcp
+          - 2379-2380/tcp
+          - 10250/tcp
+          - 10251/tcp
+          - 10252/tcp
+          - 10255/tcp
+      become: yes
+
+    # Reload 'firewalld' service
+    - name: Reload 'firewalld' service
+      systemd:
+        name: firewalld
+        state: reloaded
+      become: yes      
