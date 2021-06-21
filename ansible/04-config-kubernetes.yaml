@@ -10,7 +10,7 @@
 # firewall-cmd --reload
 
 # Configuring kubernetes on the master node
-- name: NFS Server installation (only in master)
+- name: Configuring kubernetes on the master node
   gather_facts: false
   hosts: master
   tasks:
@@ -18,7 +18,7 @@
     # We configure the firewall to access the kubernetes services
     - name: Configure the firewall to access the kubernetes services
       firewalld:
-        port: "{{ ports }}"
+        port: {{ ports }}
         permanent: yes
         state: enabled
       vars:
