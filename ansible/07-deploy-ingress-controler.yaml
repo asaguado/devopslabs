@@ -1,1 +1,11 @@
 # Desplegando un ingress controller, se realizará en master.local
+# kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
+# kubectl get namespaces
+# kubectl get pods --namespace=haproxy-controller
+# kubectl get svc -A
+- hosts: master
+  become: yes
+  tasks:
+    - name: initialize the cluster
+      shell: kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
+      become: yes   
