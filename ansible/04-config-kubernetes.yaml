@@ -30,8 +30,8 @@
         - 10255/tcp
       become: yes
 
-    # Reload 'firewalld' service (1/2)
-    - name: reload 'firewalld' service (1/2)
+    # Reload 'firewalld' service (2/2)
+    - name: reload 'firewalld' service (2/2)
       systemd:
         name: firewalld
         state: reloaded

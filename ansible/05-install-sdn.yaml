@@ -1,1 +1,37 @@
 # Instalando la SDN, se realizará en master.local
+[root@host ~]# firewall-cmd --permanent --add-port=8285/udp
+[root@host ~]# firewall-cmd --permanent --add-port=8472/udp
+[root@host ~]# firewall-cmd --reload
+[kubeadmin@master ~]$ kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+
+- hosts: all
+  become: yes
+  tasks:
+
+    # configure the firewall to access azure sdn (1/2)
+    - name: configure the firewall to access azure sdn (1/2)
+      become: yes    
+      firewalld:
+        port: "{{ item }}"
+        permanent: yes
+        state: enabled
+      with_items:        
+        - 8285/udp
+        - 8472/udp
+
+    # reload 'firewalld' service (2/2)
+    - name: reload 'firewalld' service (2/2)
+      become: yes    
+      systemd:
+        name: firewalld
+        state: reloaded
+
+
+- hosts: master
+  become: yes
+  tasks:
+    - name: initialize the cluster
+      shell: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+      become: yes         
+
+
