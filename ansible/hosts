@@ -1,16 +1,15 @@
-# hosts
-# Inventario utilizando 4 servidores de 1
-# cpu en Azure
+# localhosts
+# Inventario utilizando 2 servidores de 2 cpu y 2Gb ram en 
+# máquinas CentOS8 virtualizadas con VirtualBox en local
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=ansible
 
 [master]
-master.azure
+master.local ansible_host=192.168.1.100
 
 [workers]
-worker01.azure
-Worker02.azure
+worker.local ansible_host=192.168.1.101
 
 [nfs]
-nfs.azure
+master.local ansible_host=192.168.1.100
