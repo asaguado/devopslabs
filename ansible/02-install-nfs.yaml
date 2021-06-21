@@ -40,10 +40,10 @@
 
     # Read '/etc/exports' and apply the new configuration
     - name: Read '/etc/exports' and apply the new configuration
-      command: /usr/bin/exportfs -r
+      command: /usr/sbin/exportfs -r
       become: yes
 
     # Read '/etc/exports' and apply the new configuration
     - name: Read '/etc/exports' and apply the new configuration
-      command: /usr/bin/exportfs -s
+      command: /usr/sbin/exportfs -s
       become: yes      
