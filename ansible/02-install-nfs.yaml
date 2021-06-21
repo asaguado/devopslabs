@@ -1,7 +1,7 @@
 # En la instalación del servidor NFS en local no será necesario añadir un disco
 
 # NFS Server installation (only in master)
-- name: Server NFS installation (only in master)
+- name: NFS Server installation (only in master)
   gather_facts: false
   hosts: master
   tasks:
@@ -48,11 +48,12 @@
       command: /usr/sbin/exportfs -s
       become: yes
 
-   # Open firewall ports to the 'nfs service
+   # Open firewall ports to the 'nfs' service
     - name: Open firewall ports to the 'nfs service
       firewalld:
         service: nfs
         permanent: true
+        state: enabled  
       become: yes
 
    # Open firewall ports to the 'rpc-bind' service
@@ -60,6 +61,7 @@
       firewalld:
         service: rpc-bind
         permanent: true
+        state: enabled
       become: yes        
 
    # Open firewall ports to the 'mountd' service
@@ -67,6 +69,7 @@
       firewalld:
         service: mountd
         permanent: true
+        state: enabled
       become: yes
 
    # Reload service firewalld
