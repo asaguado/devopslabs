@@ -3,7 +3,7 @@
 # Set Timezone configuration to Europe/Madrid
 - name: set timezone
   timezone:
-  name: "{{ time_zone }}"
+    name: "{{ time_zone }}"
   become: yes  
 
 # Install the latest version of Chrony package
