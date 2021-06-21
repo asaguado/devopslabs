@@ -116,7 +116,7 @@
 
     # Install the latest version of Kubernetes (1/3)
     - name: Install these packages - kubelet kubeadm kubectl
-      yum:
+      dnf:
         name: "{{ packages }}"
         state: latest
         disable_excludes: all
