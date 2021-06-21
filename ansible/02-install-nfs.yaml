@@ -49,7 +49,7 @@
       become: yes
 
    # Open firewall ports to the 'nfs' service
-    - name: Open firewall ports to the 'nfs service
+    - name: Open firewall ports to the 'nfs' service
       firewalld:
         service: nfs
         permanent: true
