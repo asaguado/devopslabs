@@ -41,7 +41,8 @@
     - name: Config the share access to the NFS
       copy:
         src: files/exports.txt
-        dest: "/etc/exports"      
+        dest: "/etc/exports"
+      become: yes  
 
     # Read '/etc/exports' and apply the new configuration
     - name: Read '/etc/exports' and apply the new configuration
