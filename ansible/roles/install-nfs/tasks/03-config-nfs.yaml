@@ -1,0 +1,33 @@
+---
+
+# Copy exports file to the system and config the share access to the NFS
+#- name: copy exports file to the system and config the share access to the NFS
+#  copy:
+#    src: files/exports.txt
+#    dest: "/etc/exports"
+#  become: yes 
+
+- name: copy exports file to the system and config the share access to the NFS
+  copy:
+    src: "{{ item.file }}"
+    dest: "{{ item.path }}"
+  with_items:
+    - { file: 'exports', path: '/etc/exports'}
+  become: yes    
+
+# Creates '/srv/nfs' directory
+- name: creates '/srv/nfs' directory
+  file:
+    path: /srv/nfs
+    state: directory    
+  become: yes
+
+# Read '/etc/exports'
+- name: read '/etc/exports'
+  command: /usr/sbin/exportfs -r
+  become: yes
+
+# Apply the new configuration in '/etc/exports'
+- name: apply the new configuration in '/etc/exports'
+  command: /usr/sbin/exportfs -s
+  become: yes

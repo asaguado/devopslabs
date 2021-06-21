@@ -1,0 +1,19 @@
+---
+
+# firewall configuration for http
+- name: firewall configuration
+  become: yes
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  with_items:
+    - "{{ firewall }}"
+
+# reload 'firewall' service
+- name: reload firewall service
+  become: yes
+  systemd:
+    name: firewalld
+    state: reloaded

@@ -1,80 +1,12 @@
+---
+
 # En la instalación del servidor NFS en local no será necesario añadir un disco
 
 # NFS Server installation (only in master)
 - name: NFS Server installation (only in master)
-  gather_facts: false
   hosts: master
-  tasks:
-
-    # Install the latest version of 'nfs-utils' and 'net-tools' package
-    # Instalamos los paquetes de NFS y arrancamos el servicio:
-    - name: Install the latest version of 'nfs-utils' and 'net-tools'
-      dnf:
-        name: 
-          - nfs-utils
-          - net-tools
-        state: latest
-      become: yes
-
-    # Make sure a nfs-server service unit is enabled and running
-    - name: Start and enable nfs-server service
-      ansible.builtin.systemd:
-        name: nfs-server
-        state: started        
-        enabled: yes
-      become: yes
-
-    # Copy exports file to the system and config the share access to the NFS
-    - name: Copy exports file to the system and config the share access to the NFS
-      copy:
-        src: files/exports.txt
-        dest: "/etc/exports"
-      become: yes  
-
-    # Creates '/srv/nfs' directory
-    - name: Creates '/srv/nfs' directory
-      file:
-        path: /srv/nfs
-        state: directory    
-      become: yes
-
-    # Read '/etc/exports'
-    - name: Read '/etc/exports'
-      command: /usr/sbin/exportfs -r
-      become: yes
-
-    # Apply the new configuration in '/etc/exports'
-    - name: Apply the new configuration in '/etc/exports'
-      command: /usr/sbin/exportfs -s
-      become: yes
-
-   # Open firewall ports to the 'nfs' service
-    - name: Open firewall ports to the 'nfs' service
-      firewalld:
-        service: nfs
-        permanent: yes
-        state: enabled  
-      become: yes
-
-   # Open firewall ports to the 'rpc-bind' service
-    - name: Open firewall ports to the 'rpc-bind' service
-      firewalld:
-        service: rpc-bind
-        permanent: yes
-        state: enabled
-      become: yes        
-
-   # Open firewall ports to the 'mountd' service
-    - name: Open firewall ports to the 'mountd' service
-      firewalld:
-        service: mountd
-        permanent: yes
-        state: enabled
-      become: yes
-
-   # Reload 'firewalld' service
-    - name: Reload 'firewalld' service
-      systemd:
-        name: firewalld
-        state: reloaded
-      become: yes
+  gather_facts: false
+  vars_files:
+    - "group_vars/install-nfs.yaml"
+  roles:
+    - install-nfs
