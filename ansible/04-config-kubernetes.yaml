@@ -20,6 +20,7 @@
       firewalld:
         port: "{{ ports }}"
         permanent: yes
+        state: enabled
       vars:
         ports:
           - 6443/tcp
