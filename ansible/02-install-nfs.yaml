@@ -52,7 +52,7 @@
     - name: Open firewall ports to the 'nfs' service
       firewalld:
         service: nfs
-        permanent: true
+        permanent: yes
         state: enabled  
       become: yes
 
@@ -60,7 +60,7 @@
     - name: Open firewall ports to the 'rpc-bind' service
       firewalld:
         service: rpc-bind
-        permanent: true
+        permanent: yes
         state: enabled
       become: yes        
 
@@ -68,7 +68,7 @@
     - name: Open firewall ports to the 'mountd' service
       firewalld:
         service: mountd
-        permanent: true
+        permanent: yes
         state: enabled
       become: yes
 

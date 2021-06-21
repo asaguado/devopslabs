@@ -20,18 +20,18 @@
       command: /usr/sbin/modprobe br_netfilter
       become: yes
 
-  # Add permanent masquerade
-  #  - name: Add permanent masquerade
-  #    firewalld:
-  #      masquerade: yes
-  #      state: enabled        
-  #      permanent: true
-  #    become: yes  
+    # Add permanent masquerade
+      - name: Add permanent masquerade
+        firewalld:
+          masquerade: yes
+          state: enabled        
+          permanent: yes
+        become: yes  
 
    # Open firewall ports to the service: mountd
-    - name: Open firewall ports to mountd service
-      command: /usr/bin/firewall-cmd --add-masquerade --permanent
-      become: yes  
+   # - name: Open firewall ports to mountd service
+   #   command: /usr/bin/firewall-cmd --add-masquerade --permanent
+   #   become: yes  
 
    # Reload 'firewalld' service
     - name: Reload 'firewalld' service
