@@ -1,0 +1,7 @@
+---
+
+- name: install packages
+  dnf:
+    name: "{{ rpms_tools }}"
+    state: latest
+  become: yes

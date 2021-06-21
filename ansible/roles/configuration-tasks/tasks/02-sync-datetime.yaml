@@ -1,0 +1,31 @@
+---
+
+# Set Timezone configuration to Europe/Madrid
+- name: set timezone
+  timezone:
+  name: "{{ time_zone }}"
+
+# Install the latest version of Chrony package
+- name: install packages
+  dnf:
+    name: "{{ rpms_tools }}"
+    state: latest
+  become: yes    
+
+# Make sure a chrony service unit is enabled and running
+- name: enable services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+    masked: no
+  become: yes
+  with_items:
+    - "{{ services }}"    
+        
+# Enable NTP (Network Time Protocol) to sync the system date/hour
+- name: enable ntp
+  become: yes
+  command: /usr/bin/timedatectl set-ntp true
+
+

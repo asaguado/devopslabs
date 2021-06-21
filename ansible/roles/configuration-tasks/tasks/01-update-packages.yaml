@@ -1,0 +1,6 @@
+---
+
+# update installed packages
+- name: update installed packages
+  command: /usr/bin/dnf update -y
+  become: yes
