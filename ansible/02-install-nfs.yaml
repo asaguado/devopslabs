@@ -45,10 +45,12 @@
         dest: "/etc/exports"
       become: yes  
 
-    # Create a 'mount point' in '/srv/nfs' folder
-    - name: Create a 'mount point' in '/srv/nfs' folder
-      command: /usr/bin/mkdir /srv/nfs
-      become: yes      
+    # Creates '/srv/nfs' directory
+    - name: Creates '/srv/nfs' directory
+      file:
+        path: /srv/nfs
+        state: directory    
+      become: yes
 
     # Read '/etc/exports' and apply the new configuration
     - name: Read '/etc/exports' and apply the new configuration
