@@ -22,8 +22,8 @@ ansible-playbook -i hosts -l master:nfs 02-install-nfs.yaml
 # Tareas comunes a realizar en el nodo master y los workers (master.local y worker.local) 03-common-tasks.yaml
 ansible-playbook -i hosts -l master:workers 03-common-tasks.yaml
 
-# Configurando kubernetes en el nodo master (master.local) 04-kubernetes-config.yaml
-ansible-playbook -i hosts -l master 04-kubernetes-config.yaml
+# Configurando kubernetes en el nodo master (master.local) 04-config-kubernetes.yaml
+ansible-playbook -i hosts -l master 04-config-kubernetes.yaml
 
 # Instalando la SDN (master.local) 05-install-sdn.yaml
 ansible-playbook -i hosts -l master:workers 05-install-sdn.yaml
