@@ -73,14 +73,14 @@
       become: yes
 
     # After editing this file, run 'systemctl daemon-reload' to update systemd (3/3)
-    - name: Run 'systemctl daemon-reload' to update systemd
+    - name: Run 'systemctl daemon-reload' to update systemd (3/3)
       command: /usr/bin/systemctl daemon-reload
       become: yes
 
     ## INSTALL DOCKER ##
     
     # Add docker repo (1/3)
-    - name: Add docker repo
+    - name: Add docker repo (1/3)
       command: /usr/bin/dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
       become: yes
 
@@ -89,17 +89,31 @@
     #  command: /usr/bin/dnf install docker-ce-20.10.6-3.el8 -y
     #  become: yes
     
-    # Install the latest version of Docker (3/3)
-    - name: Install the latest version of Docker (3/3)
+    # Install the latest version of Docker (2/3)
+    - name: Install the latest version of Docker (2/3)
       dnf:
         name: docker-ce-20.10.6-3.el8
         state: latest
       become: yes      
 
     # Make sure a docker service unit is enabled and running (3/3)
-    - name: Make sure a docker service unit is enabled and running
+    - name: Make sure a docker service unit is enabled and running (3/3)
       ansible.builtin.systemd:
         name: docker
         state: started        
         enabled: yes
       become: yes            
+
+    ## INSTALL KUBERNETES ##
+    # Add kubernetes repo (1/3)
+    # Install the latest version of Kubernetes (2/3)
+    - name: Install the latest version of Kubernetes (2/3)
+      dnf:
+        name: 
+          - kubelet
+          - kubeadm
+          - kubectl 
+        state: latest
+        disable_excludes: repoid
+        disablerepo: kubernetes        
+      become: yes         
