@@ -1,1 +1,44 @@
 # Configurando los workers, se realizará en worker.local
+# firewall-cmd --zone=public --permanent --add-port={10250,30000-32767}/tcp
+# firewall-cmd --reload
+# kubeadm join 192.168.1.110:6443 --token gmk4le.8gsfpknu99k78qut --discovery-token-ca-cert-hash sha256:d2cd35c9ab95f4061aa9d9b993f7e8742b2307516a3632b27ea10b64baf8cd71 
+
+- hosts: master
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: get join command
+      shell: kubeadm token create --print-join-command
+      register: join_command_raw
+
+    - name: set join command
+      set_fact:
+        join_command: "{{ join_command_raw.stdout_lines[0] }}"
+
+- hosts: workers
+  become: yes
+  tasks:
+
+    # configure the firewall workers access (1/2)
+    - name: configure the firewall workers access (1/2)
+      become: yes    
+      firewalld:
+        port: "{{ item }}"
+        permanent: yes
+        state: enabled
+      with_items:        
+        - 10250/tcp
+        - 30000-32767/tcp
+
+    # reload firewalld service (2/2)
+    - name: reload 'firewalld' service (2/2)
+      become: yes    
+      systemd:
+        name: firewalld
+        state: reloaded  
+
+    - name: join cluster
+      shell: "{{ hostvars['master'].join_command }} >> node_joined.txt"
+      args:
+        chdir: $HOME
+        creates: node_joined.txt        

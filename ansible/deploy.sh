@@ -25,7 +25,7 @@ ansible-playbook -i hosts -l master:workers 03-common-tasks.yaml
 ansible-playbook -i hosts -l master 04-kubernetes-config.yaml
 
 # Instalando la SDN (master.local) 05-install-sdn.yaml
-ansible-playbook -i hosts -l master 05-install-sdn.yaml
+ansible-playbook -i hosts -l master:workers 05-install-sdn.yaml
 
 # Configurando los workers (worker.local) 06-workers-config.yaml
 ansible-playbook -i hosts -l workers 06-workers-config.yaml
