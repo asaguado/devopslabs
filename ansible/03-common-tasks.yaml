@@ -85,9 +85,16 @@
       become: yes
 
     # Install Docker (2/3)
-    - name: Install Docker
-      command: /usr/bin/dnf install docker-ce-20.10.6-3.el8 -y
-      become: yes
+    #- name: Install Docker
+    #  command: /usr/bin/dnf install docker-ce-20.10.6-3.el8 -y
+    #  become: yes
+    
+    # Install the latest version of Docker (3/3)
+    - name: Install the latest version of Docker (3/3)
+      dnf:
+        name: docker-ce-20.10.6-3.el8
+        state: latest
+      become: yes      
 
     # Make sure a docker service unit is enabled and running (3/3)
     - name: Make sure a docker service unit is enabled and running
