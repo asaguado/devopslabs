@@ -11,6 +11,7 @@
 # 05-install-sdn.yaml
 # 06-config-workers.yaml
 # 07-ingress-controler-deploy.yaml
+# 08-create-no-root-user
 
 # Tareas previas de configuración (master.local y worker.local) 01-preview-tasks.yaml
 ansible-playbook -i hosts -l master:workers 01-preview-tasks.yaml
@@ -32,3 +33,6 @@ ansible-playbook -i hosts -l master:workers 06-config-workers.yaml
 
 # Desplegando un ingress controller (master.local) 07-deploy-ingress-controler.yaml
 ansible-playbook -i hosts -l master 07-deploy-ingress-controler.yaml
+
+# Creamos un usuario no administrador para la gestión del clúster:
+ansible-playbook -i hosts -l master:workers 08-create-no-root-user

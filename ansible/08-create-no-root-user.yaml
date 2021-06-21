@@ -11,7 +11,7 @@
         line: 'kubeadmin ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'
 
-    - name: set up authorized keys for the ubuntu user
+    - name: set up authorized keys for the kubeadmin user
       authorized_key: user=kubeadmin key="{{item}}"
       with_file:
         - ~/.ssh/id_rsa.pub
