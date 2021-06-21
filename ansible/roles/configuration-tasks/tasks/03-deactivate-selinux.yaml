@@ -3,7 +3,7 @@
 # We discourage SELinux since we are not going to use it with kubernetes
 - name: Install the libselinux-python package
   dnf:
-    name: libselinux-python
+    name: python3-libselinux
     state: latest
   become: yes      
 
