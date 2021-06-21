@@ -85,8 +85,8 @@
 
     # Install kubernetes CNI (Container Network Interface) plugin and define the PODs network
     - name: initialize the cluster
-      shell: 
-        cmd: kubeadm init --pod-network-cidr=192.169.0.0/16 >> cluster_initialized.txt
+      shell: kubeadm init --pod-network-cidr=192.169.0.0/16 >> cluster_initialized.txt
         args:
           chdir: $HOME
-          creates: cluster_initialized.txt    
+          creates: cluster_initialized.txt   
+      become: yes 
