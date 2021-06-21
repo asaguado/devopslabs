@@ -31,12 +31,17 @@
       become: yes
 
     # Make sure a nfs-server service unit is enabled and running
-    - name: Make sure a nfs-server service unit is enabled and running
+    - name: Start and enable nfs-server service
       ansible.builtin.systemd:
         name: nfs-server
         state: started        
         enabled: yes
       become: yes
+
+    - name: Config the share access to the NFS
+      copy:
+        src: files/exports.txt
+        dest: "/etc/exports"      
 
     # Read '/etc/exports' and apply the new configuration
     - name: Read '/etc/exports' and apply the new configuration
