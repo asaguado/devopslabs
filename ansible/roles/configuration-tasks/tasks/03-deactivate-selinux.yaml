@@ -1,7 +1,7 @@
 ---
 
 # We discourage SELinux since we are not going to use it with kubernetes
-- name: Install the libselinux-python package
+- name: Install the python3-libselinux package
   dnf:
     name: python3-libselinux
     state: latest
@@ -9,10 +9,5 @@
 
 - name: Disable SELinux
   selinux: 
-  #ansible.posix.selinux:
     state: disabled
-  become: yes 
-
-#- name: deactivate SELinux
-#  command: /usr/bin/sed -i s/=enforcing/=disabled/g /etc/selinux/config
-#  become: yes  
+  become: yes
