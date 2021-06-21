@@ -115,13 +115,15 @@
       become: yes
 
     # Install the latest version of Kubernetes (1/3)
-    - name: Install the latest version of Kubernetes (1/3)
-      dnf:
-        name: 
+    - name: Install these packages - kubelet kubeadm kubectl
+      yum:
+        name: "{{ packages }}"
+        state: latest
+        disable_excludes: all
+        exclude: kubernetes
+      vars:
+        packages:
           - kubelet
           - kubeadm
-          - kubectl 
-        state: present
-        disable_excludes: repoid
-        disablerepo: kubernetes        
-      become: yes         
+          - kubectl
+      become: yes
