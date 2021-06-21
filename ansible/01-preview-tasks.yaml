@@ -47,6 +47,6 @@
       become: yes
 
     # Reboot machine with delay that might have lots of updates to apply
-    - name: Reboot a slow machine that might have lots of updates to apply
-      reboot:
-      become: yes
+    #- name: Reboot a slow machine that might have lots of updates to apply
+    #  reboot:
+    #  become: yes

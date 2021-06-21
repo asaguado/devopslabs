@@ -1,4 +1,18 @@
 # En la instalación del servidor NFS en local no será necesario añadir un disco
+# dnf install nfs-utils net-tools -y
+# systemctl  enable nfs-server
+# systemctl start nfs-server
+# Config the share access to the NFS
+# cat /etc/exports 
+# Read '/etc/exports' and apply the new configuration
+# exportfs -r
+# exportfs -s
+# Open firewall ports to the services: nfs, rpc-bind, mountd
+# firewall-cmd --permanent --add-service=nfs
+# firewall-cmd --permanent --add-service=rpc-bind
+# firewall-cmd --permanent --add-service=mountd
+# firewall-cmd --reload
+
 
 # NFS Server installation (only in master)
 - name: Server NFS installation (only in master)
@@ -22,4 +36,11 @@
         name: nfs-server
         state: started        
         enabled: yes
-      become: yes       
+      become: yes
+
+    # Read '/etc/exports' and apply the new configuration
+    - name: Read '/etc/exports' and apply the new configuration
+      command: 
+        - /usr/bin/exportfs -r
+        - /usr/bin/exportfs -s
+      become: yes
