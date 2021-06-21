@@ -84,9 +84,29 @@
 
 
     # Install kubernetes CNI (Container Network Interface) plugin and define the PODs network
+    # mkdir -p /root/.kube
+    # cp -i /etc/kubernetes/admin.conf /root/.kube/config
+    # chown $(id -u):$(id -g) /root/.kube/config
+    # kubectl get nodes
     - name: initialize the cluster
       shell: kubeadm init --pod-network-cidr 192.169.0.0/16 >> cluster_initialized.txt
       args:
         chdir: $HOME
         creates: cluster_initialized.txt   
       become: yes 
+
+    - name: create .kube directory
+      become: yes
+      become_user: root
+      file:
+        path: $HOME/.kube
+        state: directory
+        mode: 0755
+    
+    - name: copy admin.conf to root user kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: $HOME/.kube/config
+        remote_src: yes
+        owner: root
+        group: root
