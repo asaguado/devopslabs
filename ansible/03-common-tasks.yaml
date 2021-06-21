@@ -25,7 +25,7 @@
       firewalld:
         masquerade: yes
         state: enabled        
-        permanent: true
+        permanent: yes
       become: yes  
 
    # Reload 'firewalld' service
