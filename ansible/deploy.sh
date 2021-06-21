@@ -35,4 +35,4 @@ ansible-playbook -i hosts -l master:workers 06-config-workers.yaml
 ansible-playbook -i hosts -l master 07-deploy-ingress-controler.yaml
 
 # Creamos un usuario no administrador para la gestión del clúster:
-ansible-playbook -i hosts -l master:workers 08-create-no-root-user
+ansible-playbook -i hosts -l master:workers 08-create-no-root-user.yaml
