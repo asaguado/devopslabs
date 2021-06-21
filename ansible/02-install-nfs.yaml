@@ -72,8 +72,8 @@
         state: enabled
       become: yes
 
-   # Reload service firewalld
-    - name: Reload service firewalld
+   # Reload 'firewalld' service
+    - name: Reload 'firewalld' service
       systemd:
         name: firewalld
         state: reloaded
