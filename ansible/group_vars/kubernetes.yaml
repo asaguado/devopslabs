@@ -5,4 +5,5 @@ kubernetes_services: ['kubelet']
 kubernetes_firewall_ports: ['6443/tcp','2379-2380/tcp','10250/tcp','10251/tcp','10252/tcp','10255/tcp']
 kubernetes_workers: [192.168.1.101]
 kubernetes_pod_network: [192.169.0.0]
+kubernetes_container_ip: [172.17.0.0]
 

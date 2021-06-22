@@ -18,7 +18,7 @@
     state: enabled
     permanent: yes
   with_items:
-    - {{ kubernetes_workers }}
+    - "{{ kubernetes_workers }}"
   become: yes
 
 # Allow access from containers to localhost (1/2)
@@ -31,7 +31,7 @@
     permanent: yes
     zone: public
   with_items:
-    - 172.17.0.0
+    - "{{ kubernetes_container_ip }}"
   become: yes  
 
 # Reload 'firewalld' service (2/2)
