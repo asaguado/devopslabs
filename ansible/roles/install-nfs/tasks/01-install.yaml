@@ -1,1 +1,8 @@
 ---
+
+# Install packages: 'nfs-utils', 'nfs4-acl-tools', 'wget'
+- name: install packages
+  dnf:
+    name: "{{ rpms }}"
+    state: latest
+  become: yes

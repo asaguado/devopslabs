@@ -9,4 +9,4 @@
     masked: no
   become: yes
   with_items:
-    - "{{ services }}"   
+    - "{{ services }}"
