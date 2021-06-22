@@ -17,6 +17,8 @@
 
 - hosts: workers
   become: yes
+  vars_files:
+    - "group_vars/workers.yaml"  
   tasks:
 
     # configure the firewall workers access (1/2)
@@ -26,9 +28,9 @@
         port: "{{ item }}"
         permanent: yes
         state: enabled
+        zone: public
       with_items:        
-        - 10250/tcp
-        - 30000-32767/tcp
+        - "{{ workers_firewall_ports }}"
 
     # reload firewalld service (2/2)
     - name: reload 'firewalld' service (2/2)
