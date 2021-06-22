@@ -14,6 +14,6 @@
   gather_facts: false
   roles:
     - network-conf
-    - swap
-    - docker
-    - kubernetes
+    #- swap
+    #- docker
+    #- kubernetes
