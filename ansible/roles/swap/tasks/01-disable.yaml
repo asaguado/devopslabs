@@ -18,6 +18,6 @@
 # After editing this file, run 'systemctl daemon-reload' to update systemd (3/3)
 - name: restarted daemon-reload to pick up config changes (3/3)
   systemd:
-    state: restarted
+    #state: restarted
     daemon_reload: yes
   become: yes
