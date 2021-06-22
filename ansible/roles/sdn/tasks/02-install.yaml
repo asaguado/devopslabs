@@ -1,0 +1,4 @@
+# initialize the cluster
+- name: initialize the cluster
+  shell: kubectl apply -f {{ sdn_configmap }}
+  become: yes

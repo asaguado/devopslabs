@@ -1,0 +1,16 @@
+# configure the firewall to access azure sdn (1/2)
+- name: configure the firewall to access azure sdn (1/2)
+  become: yes    
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:        
+    - "{{ sdn_firewall_ports }}"
+
+# reload 'firewalld' service (2/2)
+- name: reload 'firewalld' service (2/2)
+  become: yes    
+  systemd:
+    name: firewalld
+    state: reloaded
