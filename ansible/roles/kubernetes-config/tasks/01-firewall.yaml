@@ -1,0 +1,17 @@
+
+# We configure the firewall to access the kubernetes services (1/2)
+- name: configure the firewall to access the kubernetes services (1/2)
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:        
+    - "{{ kubernetes_firewall_ports }}" 
+  become: yes
+
+# Reload 'firewalld' service (2/2)
+- name: reload firewall service (2/2)
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
