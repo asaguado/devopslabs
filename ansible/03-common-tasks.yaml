@@ -16,7 +16,7 @@
     - "group_vars/docker.yaml"
     - "group_vars/kubernetes.yaml"    
   roles:
-    - network-conf
-    - swap
-    - docker
+    #- network-conf
+    #- swap
+    #- docker
     - kubernetes
