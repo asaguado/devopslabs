@@ -12,24 +12,11 @@
   become: yes  
 
 # install the latest version of Kubernetes (2/2)
-#- name: install kubernetes packages (2/2)
-#  dnf:
-#    name: "{{ kubernetes_rpms }}"
-#    state: latest
-#    disable_excludes: all
-#    exclude: kubernetes    
-#  become: yes 
-
-# Install the latest version of Kubernetes (1/3)
-- name: Install these packages - kubelet kubeadm kubectl
+- name: install kubernetes packages (2/2)
   dnf:
-    name: "{{ packages }}"
+    name: "{{ kubernetes_rpms }}"
     state: present
     disable_excludes: all
-    exclude: kubernetes
-  vars:
-    packages:
-      - kubelet
-      - kubeadm
-      - kubectl
-  become: yes  
+    exclude: kubernetes    
+  become: yes 
+
