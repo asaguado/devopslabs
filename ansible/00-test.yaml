@@ -1,4 +1,5 @@
 ---
 - hosts: all
   tasks:
-    - debug: var=hostvars[inventory_hostname]
+    - debug: var={{ hostvars['master'].ansible_host }}
+    - debug: var={{ hostvars['worker'].ansible_host }}    
