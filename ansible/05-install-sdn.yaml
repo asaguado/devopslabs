@@ -4,7 +4,7 @@
 # firewall-cmd --reload
 # kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
 
-- name: Common task in all nodes
+- name: install sdn
   hosts: all
   gather_facts: false
   vars_files:
@@ -16,7 +16,7 @@
   become: yes
   tasks:
     - name: initialize the cluster
-      shell: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+      shell: kubectl apply -f {{ sdn_configmap }}
       become: yes         
 
 
