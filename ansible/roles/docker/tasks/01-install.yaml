@@ -10,7 +10,7 @@
 # install the latest version of docker (2/3)
 - name: install the latest version of docker (2/3)
   dnf:
-    baseurl: "{{ docker_repo }}"
+    enablerepo: "{{ docker_repo }}"
     name: "{{ docker_rpms }}"
     state: present
   become: yes
