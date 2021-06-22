@@ -19,4 +19,4 @@
     - network-conf
     - swap
     - docker
-    #- kubernetes
+    - kubernetes
