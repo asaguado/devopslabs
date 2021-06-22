@@ -1,0 +1,21 @@
+---
+
+## INSTALL KUBERNETES ##
+
+# add kubernetes repo (1/2)
+- name: add kubernetes repo (1/2)
+  copy:
+    src: "{{ item.file }}"
+    dest: "{{ item.path }}"
+  with_items:
+    - { file: 'kubernetes.repo', path: '/etc/yum.repos.d/kubernetes.repo'}
+  become: yes  
+
+# install the latest version of Kubernetes (2/2)
+- name: install kubernetes packages (2/2)
+  dnf:
+    name: "{{ kubernetes_rpms }}"
+    state: latest
+    disable_excludes: all
+    exclude: kubernetes    
+  become: yes  

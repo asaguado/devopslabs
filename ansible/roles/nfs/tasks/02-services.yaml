@@ -1,0 +1,12 @@
+---
+
+# Make sure a chrony service unit is enabled and running
+- name: enable services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+    masked: no
+  become: yes
+  with_items:
+    - "{{ nfs_services }}"

@@ -1,0 +1,11 @@
+---
+
+# Make sure a docker service is enabled and running
+- name: enable services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  become: yes
+  with_items:
+    - "{{ docker_services }}"

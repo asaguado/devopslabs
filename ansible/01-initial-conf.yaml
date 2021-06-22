@@ -2,10 +2,10 @@
 
 # Tareas previas de configuración, estas tareas se han de realizar en todos los nodos.
 
-- name: configuration task
+- name: initial configuration task
   hosts: all
   gather_facts: false  
   vars_files:
-    - "group_vars/configuration-tasks.yaml"
+    - "group_vars/initial-conf.yaml"
   roles:
-    - configuration-tasks
+    - initial-conf

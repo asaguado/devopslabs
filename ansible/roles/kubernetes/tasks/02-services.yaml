@@ -1,12 +1,11 @@
 ---
 
-# Make sure a chrony service unit is enabled and running
+# Make sure a kubernetes service is enabled and running
 - name: enable services
   systemd:
     name: "{{ item }}"
     state: started
     enabled: yes
-    masked: no
   become: yes
   with_items:
-    - "{{ services }}"
+    - "{{ kubernetes_services }}"

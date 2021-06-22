@@ -3,6 +3,6 @@
 # Install packages: 'nfs-utils', 'nfs4-acl-tools', 'wget'
 - name: install packages
   dnf:
-    name: "{{ rpms_tools }}"
+    name: "{{ tools_rpms }}"
     state: latest
   become: yes

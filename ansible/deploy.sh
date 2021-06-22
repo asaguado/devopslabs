@@ -14,7 +14,7 @@
 # 08-create-no-root-user
 
 # Tareas previas de configuración (master.local y worker.local) 01-configuration-tasks.yaml
-ansible-playbook -i hosts -l master:workers 01-configuration-tasks.yaml
+ansible-playbook -i hosts -l master:workers 01-initial-conf.yaml
 
 # Instalación del servidor NFS (master.local) 02-install-nfs.yaml
 ansible-playbook -i hosts -l master:nfs 02-install-nfs.yaml

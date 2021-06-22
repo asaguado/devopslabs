@@ -1,0 +1,5 @@
+---
+
+kubernetes_rpms: ['kubelet', 'kubeadm', 'kubectl']
+kubernetes_services: ['kubelet']
+

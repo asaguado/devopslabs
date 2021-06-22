@@ -1,0 +1,23 @@
+---
+
+## DISABLE SWAP MEMORY ##
+
+# Disable SWAP since kubernetes can't work with swap enabled (1/3)
+- name: disabled swap memory (1/3)
+  command: /usr/sbin/swapoff -a
+  become: yes      
+
+# Disable SWAP in fstab since kubernetes can't work with swap enabled (2/3)
+- name: disable swap configuration in fstab (2/3)
+  replace:
+    path: /etc/fstab
+    regexp: '^([^#].*?\sswap\s+.*)$'
+    replace: '# \1'
+  become: yes
+
+# After editing this file, run 'systemctl daemon-reload' to update systemd (3/3)
+- name: restarted daemon-reload to pick up config changes (3/3)
+  systemd:
+    state: restarted
+    daemon_reload: yes
+  become: yes

@@ -1,0 +1,5 @@
+---
+
+docker_rpms: ['docker-ce']
+docker_services: ['docker']
+docker_repo: 'https://download.docker.com/linux/centos/docker-ce.repo'

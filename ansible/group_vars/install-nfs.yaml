@@ -1,7 +1,0 @@
----
-
-rpms: ['nfs-utils','net-tools']
-
-services: ['nfs-server']
-
-firewall: ['nfs','rpc-bind','mountd']

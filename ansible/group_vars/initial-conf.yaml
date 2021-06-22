@@ -1,0 +1,8 @@
+---
+
+time_zone: 'Europe/Madrid'
+time_rpms: ['chrony']
+time_services: ['chronyd']
+
+tools_rpms: ['nfs-utils','nfs4-acl-tools','wget']
+

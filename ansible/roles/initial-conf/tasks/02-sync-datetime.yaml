@@ -9,7 +9,7 @@
 # Install the latest version of Chrony package
 - name: install packages
   dnf:
-    name: "{{ rpms_tools }}"
+    name: "{{ time_rpms }}"
     state: latest
   become: yes    
 
@@ -22,7 +22,7 @@
     masked: no
   become: yes
   with_items:
-    - "{{ services }}"    
+    - "{{ time_services }}"    
         
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp

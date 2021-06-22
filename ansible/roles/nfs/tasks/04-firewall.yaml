@@ -9,7 +9,7 @@
     state: enabled
     immediate: yes
   with_items:
-    - "{{ firewall }}"
+    - "{{ nfs_firewall }}"
 
 # reload 'firewall' service
 - name: reload firewall service

@@ -3,10 +3,10 @@
 # En la instalación del servidor NFS en local no será necesario añadir un disco
 
 # NFS Server installation (only in master)
-- name: NFS Server installation (only in master)
+- name: nfs server installation
   hosts: master
   gather_facts: false
   vars_files:
-    - "group_vars/install-nfs.yaml"
+    - "group_vars/nfs.yaml"
   roles:
-    - install-nfs
+    - nfs
