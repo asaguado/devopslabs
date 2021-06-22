@@ -12,7 +12,7 @@
 - name: Common task in all nodes
   hosts: all
   gather_facts: false
- vars_files:
+  vars_files:
     - "group_vars/docker.yaml"
     - "group_vars/kubernetes.yaml"    
   roles:
