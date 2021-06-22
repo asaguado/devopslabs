@@ -2,21 +2,16 @@
 
 ## INSTALL DOCKER ##
 
-# add docker repo (1/3)
-#- name: add docker repo (1/3)
-#  command: "/usr/bin/dnf config-manager --add-repo={{ docker_repo }}"
-#  become: yes
-
-# install the latest version of docker (2/3)
-- name: install the latest version of docker (2/3)
+# install the latest version of docker (1/2)
+- name: install the latest version of docker (1/2)
   dnf:
     enablerepo: "{{ docker_repo }}"
     name: "{{ docker_rpms }}"
     state: present
   become: yes
 
-# make sure a docker service is enabled and running (3/3)
-- name: make sure a docker service is enabled and running (3/3)
+# make sure a docker service is enabled and running (2/2)
+- name: make sure a docker service is enabled and running (2/2)
   systemd:
     name: docker
     state: started
