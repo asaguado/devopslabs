@@ -1,3 +1,7 @@
+- name: host
+   debug: msg="{{ item }}" 
+   with_items:
+    - "{{ groups['tests'] }}"
 
 # We configure the firewall to access the kubernetes services (1/2)
 - name: configure the firewall to access the kubernetes services (1/2)
@@ -8,6 +12,32 @@
   with_items:        
     - "{{ kubernetes_firewall_ports }}" 
   become: yes
+
+# Allow access from workers (1/2)
+# firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=192.168.1.111/32 accept'
+# firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=192.168.1.112/32 accept'
+# firewall-cmd --reload
+- name: allow access from workers (1/2)
+  firewalld:
+    rich_rule: "rule family=ipv4 source address={{ item }}/32 accept"
+    state: enabled
+    permanent: yes
+  with_items:
+    - {{ kubernetes_workers }}
+  become: yes
+
+# Allow access from containers to localhost (1/2)
+# firewall-cmd --zone=public --permanent --add-rich-rule 'rule family=ipv4 source address=172.17.0.0/16 accept'
+# firewall-cmd --reload
+- name: allow access from containers to localhost (1/2)
+  firewalld:
+    rich_rule: "rule family=ipv4 source address={{ item }}/16 accept"
+    state: enabled
+    permanent: yes
+    zone: public
+  with_items:
+    - 172.17.0.0
+  become: yes  
 
 # Reload 'firewalld' service (2/2)
 - name: reload firewall service (2/2)
