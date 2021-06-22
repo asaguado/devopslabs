@@ -1,6 +1,6 @@
 ---
 
 - include_tasks: 01-firewall.yaml
-- include_tasks: 02-kubeadm.yaml
+#- include_tasks: 02-kubeadm.yaml
 - include_tasks: 03-container-network-inferface.yaml
 - include_tasks: 04-configure-access-to-cluster.yaml
