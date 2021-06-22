@@ -14,11 +14,9 @@
 
 - hosts: master
   become: yes
-  vars_files:
-    - "group_vars/sdn.yaml"  
   tasks:
     - name: initialize the cluster
-      shell: kubectl apply -f {{ sdn_configmap }}
+      shell: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
       become: yes         
 
 
