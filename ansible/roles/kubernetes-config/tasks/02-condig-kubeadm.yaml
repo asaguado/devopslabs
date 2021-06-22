@@ -1,0 +1,12 @@
+# Config kubeadm
+- name: config kubeadm
+  command: /usr/bin/kubeadm config images pull
+  become: yes
+
+# Install kubernetes CNI (Container Network Interface) plugin and define the PODs network
+- name: initialize the cluster
+  shell: kubeadm init --pod-network-cidr {{ kubernetes_pod_network }}/16 >> cluster_initialized.txt
+  args:
+    chdir: $HOME
+    creates: cluster_initialized.txt   
+  become: yes   

@@ -40,8 +40,3 @@
     name: firewalld
     state: reloaded
   become: yes
-
-# Config kubeadm
-- name: config kubeadm
-  command: /usr/bin/kubeadm config images pull
-  become: yes  
