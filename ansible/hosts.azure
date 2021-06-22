@@ -1,5 +1,5 @@
 # hosts
-# Inventario utilizando 4 servidores de 1
+# Inventario utilizando 4 servidores de 2
 # cpu en Azure
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
