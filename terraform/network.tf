@@ -12,7 +12,7 @@
 
 resource "azurerm_virtual_network" "myNet" {
   name                = "kubernetes-network"
-  address_space       = ["10.0.0.0/16"]
+  address_space       = [var.address_spaces] # 10.0.0.0/16 >> 10.0.0.0 - 10.0.255.255 (65536 direcciones)
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -25,10 +25,10 @@ resource "azurerm_virtual_network" "myNet" {
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet
 
 resource "azurerm_subnet" "mySubnet" {
-  name                   = "internal"
+  name                   = "kubernetes-internal"
   resource_group_name    = azurerm_resource_group.rg.name
   virtual_network_name   = azurerm_virtual_network.myNet.name
-  address_prefixes       = ["10.0.1.0/24"]
+  address_prefixes       = [var.subnet_address_prefixes] # 10.0.1.0/24 >> 10.0.0.0 - 10.0.0.255 (251 + 5 direcciones reservadas de Azure)
 }
 
 # 3. Create NIC. Una tarjeta de red que deberemos asignar a la subred anterior.

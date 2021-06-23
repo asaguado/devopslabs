@@ -3,7 +3,19 @@
 variable "location" {
   type = string
   description = "Región de Azure donde crearemos la infraestructura"
-  default = "West Europe"
+  default = "westeurope"
+}
+
+variable "address_spaces" {
+  type = string
+  description = "Espacio de direcciones IP para la red principal"
+  default = "10.0.0.0/16"   # 10.0.0.0/16 >> 10.0.0.0 - 10.0.255.255 (65536 direcciones)
+}
+
+variable "subnet_address_prefixes" {
+  type = string
+  description = "Espacio de direcciones IP para la red subred"
+  default = "10.0.0.0/24"   # 10.0.1.0/24 >> 10.0.0.0 - 10.0.0.255 (251 + 5 direcciones reservadas de Azure)
 }
 
 # https://learn.hashicorp.com/tutorials/terraform/variables?in=terraform/configuration-language
