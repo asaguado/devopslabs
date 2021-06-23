@@ -27,7 +27,9 @@ resource "azurerm_resource_group" "rg" {
 # Storage account
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
 resource "azurerm_storage_account" "myStorageAccount" {
-  name                     = "storageBcU5E5Nk" 
+  # storage account name is UNIQUE in all Azure, can only consist of
+  # lowercase letters and numbers, and must be between 3 and 24 characters long
+  name                     = "storagejgyztsh73y8p" 
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
