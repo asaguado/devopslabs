@@ -11,8 +11,8 @@ variable "location" {
 # default = "Standard_A2_v2" # 2 CPU,  4.0 GB RAM, 20 GB SSD, NIC 2 / moderado
 # default = "Standard_D2_v3" # 2 CPU,  8.0 GB RAM, 50 GB SSD, NIC 2 / moderado
 variable "vm_size" {
+  description = "Tamaño de la máquina virtual"  
   type = string
-  description = "Tamaño de la máquina virtual"
   default = "Standard_A2_v2" # 2 CPU,  4.0 GB RAM, 20 GB SSD
 }
 

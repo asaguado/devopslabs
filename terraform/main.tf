@@ -13,6 +13,7 @@ terraform {
   }
 }
 
+/*
 # crea un service principal y rellena los siguientes datos para autenticar
 provider "azurerm" {
   features {}
@@ -21,31 +22,29 @@ provider "azurerm" {
   client_secret   = "<PASSWORD>"
   tenant_id       = "<TENANT>"
 }
+*/
 
+# Resource group
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
-
 resource "azurerm_resource_group" "rg" {
-    name     =  "kubernetes_rg"
-    location = var.location
+  name     = "kubernetes_rg"
+  location = var.location
 
-    tags = {
-        environment = "CP2"
-    }
-
+  tags = {
+    environment = "dev"
+  }
 }
 
 # Storage account
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
-
 resource "azurerm_storage_account" "stAccount" {
-    name                     = "staccountcp2" 
-    resource_group_name      = azurerm_resource_group.rg.name
-    location                 = azurerm_resource_group.rg.location
-    account_tier             = "Standard"
-    account_replication_type = "LRS"
+  name                     = "staccountcp2" 
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 
-    tags = {
-        environment = "CP2"
-    }
-
+  tags = {
+      environment = "dev"
+  }
 }

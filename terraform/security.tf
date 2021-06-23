@@ -20,15 +20,20 @@ resource "azurerm_network_security_group" "mySecGroup" {
     }
 
     tags = {
-        environment = "CP2"
+        environment = "dev"
     }
 }
 
 # Vinculamos el security group al interface de red
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_security_group_association
+# https://stackoverflow.com/questions/60829675/issues-with-creating-multiple-vms-with-terraform-for-azure
+# https://www.ntweekly.com/2021/03/20/create-multiple-linux-vms-in-azure-with-terraform/
 
 resource "azurerm_network_interface_security_group_association" "mySecGroupAssociation1" {
-    network_interface_id      = azurerm_network_interface.myNic1.id
-    network_security_group_id = azurerm_network_security_group.mySecGroup.id
+    count = length(azurerm_network_interface.myNic)
+    #network_interface_id        = azurerm_network_interface.myNic1.id
+    #network_interface_id      = "${azurerm_network_interface.myNic[count.index]}"
+    network_interface_ids       = [element(azurerm_network_interface.myNic.*.id, count.index),]
+    network_security_group_id   = azurerm_network_security_group.mySecGroup.id
 
 }
