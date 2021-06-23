@@ -1,11 +1,4 @@
 # En el fichero vars.tf incluiremos las variables que vayamos a utilizar.
-
-variable "location" {
-  type = string
-  description = "Región de Azure donde crearemos la infraestructura"
-  default = "westeurope"
-}
-
 variable "address_spaces" {
   type = string
   description = "Espacio de direcciones IP para la red principal"
