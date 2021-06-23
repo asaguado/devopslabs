@@ -9,8 +9,6 @@ resource "azurerm_linux_virtual_machine" "myVM" {
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
     admin_username      = "adminuser"
-    #network_interface_ids = [ azurerm_network_interface.myNic1.id ]
-    #network_interface_id= "${azurerm_network_interface.myNic[count.index]}" 
     network_interface_ids = [element(azurerm_network_interface.myNic.*.id, count.index),]
     disable_password_authentication = true
 
