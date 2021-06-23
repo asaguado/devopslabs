@@ -57,20 +57,6 @@ resource "azurerm_network_interface" "myNic" {
 # 4. IP pública. Una dirección IP pública para poder acceder a ella desde fuera de Azure.
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip
 
-/*
-resource "azurerm_public_ip" "myPublicIp1" {
-  name                = "vmip1"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
-  sku                 = "Basic"
-
-  tags = {
-      environment = "dev"
-  }
-}
-*/
-
 resource "azurerm_public_ip" "myPublicIp" {
   count               = length(var.vms)  
   name                = "vmip-${var.vms[count.index]}"  
