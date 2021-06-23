@@ -73,8 +73,8 @@ resource "azurerm_public_ip" "myPublicIp1" {
 resource "azurerm_public_ip" "myPublicIp" {
   count               = length(var.vms)  
   name                = "vmip-${var.vms[count.index]}"  
-  resource_group_name = azurerm_resource_group.ubuntu.name
-  location            = azurerm_resource_group.ubuntu.location
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
   allocation_method   = "Dynamic"
 
   tags = {
