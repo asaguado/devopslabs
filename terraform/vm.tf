@@ -4,7 +4,7 @@
 
 resource "azurerm_linux_virtual_machine" "myVM" {
     count               = length(var.vms)
-    name                = "vm-${var.mvs[count.index]}"
+    name                = "vm-${var.vms[count.index]}"
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size

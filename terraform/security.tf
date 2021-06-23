@@ -33,7 +33,7 @@ resource "azurerm_network_interface_security_group_association" "mySecGroupAssoc
     count = length(azurerm_network_interface.myNic)
     #network_interface_id        = azurerm_network_interface.myNic1.id
     #network_interface_id      = "${azurerm_network_interface.myNic[count.index]}"
-    network_interface_id       = [element(azurerm_network_interface.myNic.*.id, count.index),]
+    network_interface_id       = [element(azurerm_network_interface.myNic.*.id, count.index)]
     network_security_group_id  = azurerm_network_security_group.mySecGroup.id
 
 }
