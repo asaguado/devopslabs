@@ -36,12 +36,12 @@ resource "azurerm_subnet" "mySubnet" {
 
 resource "azurerm_network_interface" "myNic" {
   count               = length(var.vms)  
-  name                = "nic-${var.mvs[count.index]}"
+  name                = "nic-${var.vms[count.index]}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
-    name                           = "ipconf-${var.mvs[count.index]}"
+    name                           = "ipconf-${var.vms[count.index]}"
     subnet_id                      = azurerm_subnet.mySubnet.id
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.${count.index + 10}"
