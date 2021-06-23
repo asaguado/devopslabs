@@ -11,7 +11,7 @@ resource "azurerm_linux_virtual_machine" "myVM" {
     admin_username      = "adminuser"
     #network_interface_ids = [ azurerm_network_interface.myNic1.id ]
     #network_interface_id= "${azurerm_network_interface.myNic[count.index]}" 
-    network_interface_id = [element(azurerm_network_interface.myNic.*.id, count.index),]
+    network_interface_ids = [element(azurerm_network_interface.myNic.*.id, count.index),]
     disable_password_authentication = true
 
     admin_ssh_key {
