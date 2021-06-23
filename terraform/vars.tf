@@ -8,7 +8,7 @@ variable "address_spaces" {
 variable "subnet_address_prefixes" {
   type = string
   description = "Espacio de direcciones IP para la red subred"
-  default = "10.0.0.0/24"   # 10.0.1.0/24 >> 10.0.0.0 - 10.0.0.255 (251 + 5 direcciones reservadas de Azure)
+  default = "10.0.1.0/24"   # 10.0.1.0/24 >> 10.0.1.0 - 10.0.1.255 (251 + 5 direcciones reservadas de Azure)
 }
 
 # https://learn.hashicorp.com/tutorials/terraform/variables?in=terraform/configuration-language
