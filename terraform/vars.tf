@@ -13,12 +13,13 @@ variable "subnet_address_prefixes" {
 
 # https://learn.hashicorp.com/tutorials/terraform/variables?in=terraform/configuration-language
 # https://docs.microsoft.com/es-es/azure/cloud-services/cloud-services-sizes-specs
-# default = "Standard_A2_v2" # 2 CPU,  4.0 GB RAM, 20 GB SSD, NIC 2 / moderado
-# default = "Standard_D2_v3" # 2 CPU,  8.0 GB RAM, 50 GB SSD, NIC 2 / moderado
+# default = "Standard_A2_v2" # 2 CPU, 4.0 GB RAM, 20 GB SSD, NIC 2 / moderado (limitado a 2 máquinas)
+# default = "Standard_D2_v3" # 2 CPU, 8.0 GB RAM, 50 GB SSD, NIC 2 / moderado
+# default = "Standard_D1_v2" # 1 CPU, 3.5 GB RAM, 50 GB SS, NIC 1 / moderado
 variable "vm_size" {
   description = "Tamaño de la máquina virtual"  
   type = string
-  default = "Standard_A2_v2" # 2 CPU,  4.0 GB RAM, 20 GB SSD
+  default = "Standard_D1_v2" # 1 CPU, 3.5 GB RAM, 50 GB SS, NIC 1 / moderado
 }
 
 variable "vms" {
