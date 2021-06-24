@@ -1,4 +1,4 @@
-# Configurando los workers, se realizará en worker.local
+# Configurando los workers, se realizará en worker
 
 # Config workers to join in the cluster
 - name: node master create token

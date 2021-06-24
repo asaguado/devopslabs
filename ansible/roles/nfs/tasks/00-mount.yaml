@@ -1,0 +1,45 @@
+---
+
+# Install NFS server
+# 1. Create VG (volume group)
+# 2. Create LV (logical volume)
+# 3. Create a type of filesystem eg (ext3, ext4 or xfs etc.)
+# 4. Mount the created filesystem
+
+# Create VG (volume group)
+- name: create the "{{ vg_name }}" volume group
+  lvg:
+    vg: "{{ vg_name }}" # The name of the volume group.
+    pvs: "{{ pvs_name }}" # Devices to use as physical devices in this volume group. eg (/dev/sdb1 or /dev/sdc1)
+    pesize: "{{ physical_extent_size }}" # The size of the physical extent
+    state: present
+  become: yes
+
+# Create LV (logical volume)
+- name: create "{{ lv_name }}" logical volume
+  lvol:
+    vg: "{{ vg_name }}" # The name of the volume group.
+    lv: "{{ lv_name }}" # The name of the logical volume.
+    size: "{{ lv_size }}" # The size of the logical volume, according to lvcreate(8)
+    active: yes
+    force: no
+    state: present 
+  become: yes
+
+# Create a type of filesystem eg (ext3, ext4 or xfs etc.)
+- name: create a "{{ file_system }}" filesystem on logical volume "/dev/mapper/{{ vg_name}}-{{ lv_name}}"
+  filesystem:
+    fstype: "{{ file_system }}" # Type of filesystem (ext3, ext4, xfs, etc.)
+    dev: "/dev/mapper/{{ vg_name }}-{{ lv_name }}" # Path of device mapper to be created with creating filesystem.
+    force: no
+  become: yes
+
+# Mount the created filesystem
+- name: mount filesystem # Create fstab entry and mount the filesystem.
+  mount:
+    path: "{{ mount_point }}" # Mount point where to mount the filesystem
+    src: "/dev/mapper/{{ vg_name }}-{{ lv_name }}" # Full related path of device mapper to be mounted under mount point.
+    fstype: "{{ file_system }}" # Filesystem type
+    opts: rw,noatime,noexec,nodev,nosuid # Mount options
+    state: mounted   
+  become: yes

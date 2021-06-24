@@ -1,4 +1,5 @@
-# Configurando kubernetes en el nodo master, que se realizará solo en el nodo master.local
+# Configurando kubernetes en el nodo master, que se realizará solo en el nodo master
+# Añadimos también a este playbook la tarea para crear un usuario administrador
 
 # Configuring kubernetes on the master node
 - name: Configuring kubernetes on the master node
@@ -9,4 +10,4 @@
     - "group_vars/add-admin-user.yaml"    
   roles:
     - kubernetes-config
-    #- add-admin-user
+    # - add-admin-user

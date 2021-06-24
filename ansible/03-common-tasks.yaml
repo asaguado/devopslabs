@@ -1,5 +1,5 @@
 # Tareas comunes a realizar en el nodo master y los workers, que
-# se realizarán en los nodos master.local y worker.local
+# se realizarán en los nodos master y worker
 # 1. Configura resolución DNS (localhost)
 # 2. Activar firewall
 # 3. Activar transparent masquerading para que los PODs puedan comunicarse dentro del cluster mediante VXLAN

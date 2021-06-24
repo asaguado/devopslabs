@@ -1,4 +1,4 @@
-# Instalando la SDN, se realizará en master.local
+# Instalando la SDN, se realizará en master
 
 # install sdn
 - name: install sdn
