@@ -1,0 +1,5 @@
+---
+
+user_name: 'kubeadmin'
+user_shell: '/bin/bash'
+public_key: '~/.ssh/id_rsa.pub'

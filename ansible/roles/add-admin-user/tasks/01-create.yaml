@@ -1,0 +1,21 @@
+# Creamos un usuario no administrador para la gestión del clúster:
+
+# create no root user
+- name: create no root user {{ user_name }}
+  user: name={{ user_name }} append=yes state=present createhome=yes shell={{ user_shell }}
+  become: yes
+
+# allow no root user to have passwordless sudo
+- name: allow {{ user_name }} to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    line: '{{ user_name }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  become: yes
+
+# set up authorized keys for the no root user
+- name: set up authorized keys for the {{ user_name }} user
+  authorized_key: user={{ user_name }} key="{{ item }}"
+  with_file:
+    - "{{ public_key }}"
+  become: yes

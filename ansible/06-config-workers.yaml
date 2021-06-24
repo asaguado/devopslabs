@@ -1,7 +1,4 @@
 # Configurando los workers, se realizará en worker.local
-# firewall-cmd --zone=public --permanent --add-port={10250,30000-32767}/tcp
-# firewall-cmd --reload
-# kubeadm join 192.168.1.110:6443 --token gmk4le.8gsfpknu99k78qut --discovery-token-ca-cert-hash sha256:d2cd35c9ab95f4061aa9d9b993f7e8742b2307516a3632b27ea10b64baf8cd71 
 
 # Config workers to join in the cluster
 - name: node master create token

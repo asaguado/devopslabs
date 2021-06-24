@@ -1,16 +1,15 @@
 # hosts
-# Inventario utilizando 4 servidores de 2
-# cpu en Azure
+# Inventario utilizando 4 servidores de 2 cpu en Azure
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=ansible
 
 [master]
-master.azure
+master
 
 [workers]
-worker01.azure
-Worker02.azure
+worker01
+Worker02
 
 [nfs]
-nfs.azure
+nfs

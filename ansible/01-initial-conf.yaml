@@ -1,7 +1,6 @@
----
-
 # Tareas previas de configuración, estas tareas se han de realizar en todos los nodos.
 
+# initial configuration task
 - name: initial configuration task
   hosts: all
   gather_facts: false  

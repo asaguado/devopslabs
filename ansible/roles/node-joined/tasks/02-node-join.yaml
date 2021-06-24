@@ -1,4 +1,4 @@
-# Join the cluster with join_command in master
+# join the cluster with join_command in master node
 - name: join cluster
   become: yes
   shell: "{{ hostvars['master.local'].join_command }} >> node_joined.txt"

@@ -1,9 +1,6 @@
 # Instalando la SDN, se realizará en master.local
-# firewall-cmd --permanent --add-port=8285/udp
-# firewall-cmd --permanent --add-port=8472/udp
-# firewall-cmd --reload
-# kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
 
+# install sdn
 - name: install sdn
   hosts: master
   gather_facts: false

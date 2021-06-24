@@ -11,7 +11,7 @@
 
 # reload firewalld service (2/2)
 - name: reload 'firewalld' service (2/2)
-  become: yes    
+  become: yes
   systemd:
     name: firewalld
     state: reloaded  

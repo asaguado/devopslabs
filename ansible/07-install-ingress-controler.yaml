@@ -1,8 +1,4 @@
 # Install ingress controller
-# kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
-# kubectl get namespaces
-# kubectl get pods --namespace=haproxy-controller
-# kubectl get svc -A
 - hosts: master
   become: yes
   tasks:

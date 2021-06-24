@@ -6,6 +6,7 @@
   gather_facts: false
   vars_files:
     - "group_vars/kubernetes.yaml"    
+    - "group_vars/add-admin-user.yaml"    
   roles:
     - kubernetes-config
     #- add-admin-user

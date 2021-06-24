@@ -1,17 +1,8 @@
 # Create no-root user
-- hosts: all
-  become: yes
-  tasks:
-    - name: create the 'kubeadmin' user
-      user: name=kubeadmin append=yes state=present createhome=yes shell=/bin/bash
-
-    - name: allow 'kubeadmin' to have passwordless sudo
-      lineinfile:
-        dest: /etc/sudoers
-        line: 'kubeadmin ALL=(ALL) NOPASSWD: ALL'
-        validate: 'visudo -cf %s'
-
-    - name: set up authorized keys for the kubeadmin user
-      authorized_key: user=kubeadmin key="{{item}}"
-      with_file:
-        - ~/.ssh/id_rsa.pub
+- name: create no-root user
+  hosts: master
+  gather_facts: false
+  vars_files:
+    - "group_vars/add-admin-user.yaml"  
+  roles:
+    - add-admin-user
