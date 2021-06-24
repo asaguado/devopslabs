@@ -1,6 +1,5 @@
 #!/bin/bash
 # Automatizando el despliegue de kubernetes (Ansible)
-# https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04-es
 
 # Tareas previas de configuración (master.local y worker.local)
 ansible-playbook -i hosts -l master:workers 01-initial-conf.yaml
