@@ -7,7 +7,7 @@ physical_extent_size: '8' # The size of the physical extent. eg (8MB, 32MB,...)
 
 # LV (logical volume)
 lv_name: 'nfs_lv' # Name of Logical Volume
-lv_size: '10G' # The size of the logical volume, according to lvcreate(8)
+lv_size: '100%FREE' # The size of the logical volume, according to lvcreate(8)
 
 # Type of filesystem 
 file_system: 'xfs' # What type of filesystem it can be ext3, ext4 or xfs etc.
