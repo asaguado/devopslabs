@@ -13,7 +13,7 @@
 - name: creates '/srv/nfs' directory
   file:
     path: /srv/nfs
-    state: directory    
+    state: directory   
   become: yes
 
 # Read '/etc/exports'

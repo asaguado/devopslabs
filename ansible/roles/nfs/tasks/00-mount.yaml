@@ -23,6 +23,7 @@
     size: "{{ lv_size }}" # The size of the logical volume, according to lvcreate(8)
     active: yes
     force: yes
+    shrink: yes
     state: present 
   become: yes
 
