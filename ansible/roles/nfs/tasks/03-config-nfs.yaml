@@ -9,13 +9,6 @@
     - { file: 'exports', path: '/etc/exports'}
   become: yes    
 
-# Creates '/srv/nfs' directory
-- name: creates '/srv/nfs' directory
-  file:
-    path: /srv/nfs
-    state: directory   
-  become: yes
-
 # Read '/etc/exports'
 - name: read '/etc/exports'
   command: /usr/sbin/exportfs -r
