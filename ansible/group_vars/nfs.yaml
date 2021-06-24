@@ -1,16 +1,16 @@
 ---
 
 # VG (volume group)
-vg_name: 'data_vg' # Name of Volume group
-pvs_name: '/dev/sdb' # Physical Volume created using partition eg (/dev/sdb1 or /dev/sdc1)
+vg_name: 'data_vg' # Name of volume group
+pvs_name: '/dev/sdb' # Physical volume created using partition. eg (/dev/sdb1 or /dev/sdc1)
 physical_extent_size: '8' # The size of the physical extent. eg (8MB, 32MB,...)
 
 # LV (logical volume)
-lv_name: 'nfs_lv' # Name of Logical Volume
-lv_size: '100%VG' # The size of the logical volume, according to lvcreate(8)
+lv_name: 'nfs_lv' # Name of logical volume
+lv_size: '100%VG' # Resize the logical volume to % of VG
 
 # Type of filesystem 
-file_system: 'xfs' # What type of filesystem it can be ext3, ext4 or xfs etc.
+file_system: 'xfs' # Type of filesystem (ext3, ext4, xfs, etc)
 
 # Mount the created filesystem
 mount_point: '/srv/nfs'

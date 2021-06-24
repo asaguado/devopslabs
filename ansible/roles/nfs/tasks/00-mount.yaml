@@ -4,7 +4,8 @@
 # 1. Create VG (volume group)
 # 2. Create LV (logical volume)
 # 3. Create a type of filesystem eg (ext3, ext4 or xfs etc.)
-# 4. Mount the created filesystem
+# 4. Create mount_point directory
+# 5. Mount the created filesystem
 
 # Create VG (volume group)
 - name: create the "{{ vg_name }}" volume group
