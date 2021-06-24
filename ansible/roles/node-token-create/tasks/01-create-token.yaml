@@ -1,0 +1,9 @@
+# Create token with kubeadm and storage in join_command_raw variable
+- name: get join command
+  shell: kubeadm token create --print-join-command
+  register: join_command_raw
+
+# Get token in join_command_raw.stdout_lines[0] and set join command
+- name: set join command
+  set_fact:
+    join_command: "{{ join_command_raw.stdout_lines[0] }}"

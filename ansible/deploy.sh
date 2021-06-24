@@ -16,8 +16,8 @@
 # Tareas previas de configuración (master.local y worker.local) 01-configuration-tasks.yaml
 ansible-playbook -i hosts -l master:workers 01-initial-conf.yaml
 
-# Instalación del servidor NFS (master.local) 02-install-nfs.yaml
-ansible-playbook -i hosts -l master:nfs 02-install-nfs.yaml
+# Instalación del servidor NFS (nfs.local) 02-install-nfs.yaml
+ansible-playbook -i hosts -l nfs 02-install-nfs.yaml
 
 # Tareas comunes a realizar en el nodo master y los workers (master.local y worker.local) 03-common-tasks.yaml
 ansible-playbook -i hosts -l master:workers 03-common-tasks.yaml
@@ -26,13 +26,13 @@ ansible-playbook -i hosts -l master:workers 03-common-tasks.yaml
 ansible-playbook -i hosts -l master 04-config-kubernetes.yaml
 
 # Instalando la SDN (master.local) 05-install-sdn.yaml
-ansible-playbook -i hosts -l master:workers 05-install-sdn.yaml
+ansible-playbook -i hosts -l master 05-install-sdn.yaml
 
 # Configurando los workers (worker.local) 06-config-workers.yaml
 ansible-playbook -i hosts -l master:workers 06-config-workers.yaml
 
-# Desplegando un ingress controller (master.local) 07-deploy-ingress-controler.yaml
-ansible-playbook -i hosts -l master 07-deploy-ingress-controler.yaml
+# Instalando un ingress controller (master.local) 07-install-ingress-controler.yaml
+ansible-playbook -i hosts -l master 07-install-ingress-controler.yaml
 
 # Creamos un usuario no administrador para la gestión del clúster:
 ansible-playbook -i hosts -l master:workers 08-create-no-root-user.yaml

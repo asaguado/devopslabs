@@ -5,18 +5,9 @@
 # kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
 
 - name: install sdn
-  hosts: all
+  hosts: master
   gather_facts: false
   vars_files:
     - "group_vars/sdn.yaml"
   roles:
     - sdn
-
-- hosts: master
-  become: yes
-  tasks:
-    - name: initialize the cluster
-      shell: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
-      become: yes         
-
-

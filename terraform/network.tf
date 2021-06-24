@@ -25,7 +25,7 @@ resource "azurerm_virtual_network" "myNet" {
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet
 
 resource "azurerm_subnet" "mySubnet" {
-  name                   = "kubernetes-internal"
+  name                   = "kubernetes-subnet"
   resource_group_name    = azurerm_resource_group.rg.name
   virtual_network_name   = azurerm_virtual_network.myNet.name
   address_prefixes       = [var.subnet_address_prefixes] # 10.0.1.0/24 >> 10.0.0.0 - 10.0.0.255 (251 + 5 direcciones reservadas de Azure)
@@ -45,8 +45,7 @@ resource "azurerm_network_interface" "myNic" {
     subnet_id                      = azurerm_subnet.mySubnet.id
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.${count.index + 10}"
-    #public_ip_address_id           = azurerm_public_ip.myPublicIp1.id
-    public_ip_address_id           =element(azurerm_public_ip.myPublicIp.*.id, count.index)
+    public_ip_address_id           = element(azurerm_public_ip.myPublicIp.*.id, count.index)
   }
 
   tags = {
