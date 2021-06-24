@@ -2,7 +2,7 @@
 
 # VG (volume group)
 vg_name: 'data_vg' # Name of Volume group
-pvs_name: '/dev/vdb' # Physical Volume created using partition eg (/dev/sdb1 or /dev/sdc1)
+pvs_name: '/dev/sdb' # Physical Volume created using partition eg (/dev/sdb1 or /dev/sdc1)
 physical_extent_size: '8' # The size of the physical extent. eg (8MB, 32MB,...)
 
 # LV (logical volume)
