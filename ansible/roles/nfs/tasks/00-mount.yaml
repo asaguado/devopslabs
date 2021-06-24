@@ -34,6 +34,13 @@
     force: no
   become: yes
 
+# Create mount_point directory
+- name: create {{ mount_point }} directory
+  file:
+    path: "{{ mount_point }}"
+    state: directory    
+  become: yes  
+
 # Mount the created filesystem
 - name: mount filesystem # Create fstab entry and mount the filesystem.
   mount:
