@@ -1,5 +1,6 @@
 # Join the cluster with join_command in master
 - name: join cluster
+  become: yes
   shell: "{{ hostvars['master.local'].join_command }} >> node_joined.txt"
   args:
     chdir: $HOME
