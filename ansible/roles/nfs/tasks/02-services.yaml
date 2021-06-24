@@ -2,8 +2,8 @@
 
 # Make sure a chrony service unit is enabled and running
 - name: enable services
+  become: yes
   systemd:
-    become: yes      
     name: "{{ item }}"
     state: started
     enabled: yes
