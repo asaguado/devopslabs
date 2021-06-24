@@ -21,7 +21,7 @@
     vg: "{{ vg_name }}" # The name of the volume group.
     lv: "{{ lv_name }}" # The name of the logical volume.
     size: "{{ lv_size }}" # The size of the logical volume, according to lvcreate(8)
-    active: yes
+    #active: yes
     force: no
     state: present 
   become: yes
