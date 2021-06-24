@@ -4,5 +4,5 @@
 - include_tasks: 00-mount.yaml
 - include_tasks: 01-install.yaml
 - include_tasks: 02-services.yaml
-- include_tasks: 03-config-nfs.yaml
+- include_tasks: 03-exports.yaml
 - include_tasks: 04-firewall.yaml
