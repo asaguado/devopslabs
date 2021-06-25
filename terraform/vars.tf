@@ -1,10 +1,11 @@
-# En el fichero vars.tf incluiremos las variables que vayamos a utilizar.
+# Espacio de direcciones IP para la red principal
 variable "address_spaces" {
   type = string
   description = "Espacio de direcciones IP para la red principal"
   default = "10.0.0.0/16"   # 10.0.0.0/16 >> 10.0.0.0 - 10.0.255.255 (65536 direcciones)
 }
 
+# Espacio de direcciones IP para la red subred
 variable "subnet_address_prefixes" {
   type = string
   description = "Espacio de direcciones IP para la red subred"
@@ -26,4 +27,11 @@ variable "vms" {
   description = "Máquinas virtuales"
   type = list(string)
   default = [ "master", "worker01", "worker02", "nfs" ]
+}
+
+# adminuser
+variable "admin_username" {
+  description = "Admin username (no root)"  
+  type = string
+  default = "kubeadmin"
 }
