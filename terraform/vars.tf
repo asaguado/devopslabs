@@ -31,8 +31,8 @@ variable "vms" {
 
 variable "vms_disks" {
   description = "Discos en máquinas virtuales"
-  type = list(string)
-  default = [ 0, 0, 0, 1]
+  type = list(bool)
+  default = [ false, false, false, true]
 }
 
 variable "admin_username" {

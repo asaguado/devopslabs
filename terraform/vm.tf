@@ -56,7 +56,9 @@ resource "azurerm_managed_disk" "myManagedDisk" {
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "myDataDisk" {
-    count             = "${var.vms == "nfs" ? 1 : 0}"
+    #count              = length(var.vms_disks)
+    #handler            = "${var.vms[count.index] == "nfs" ? 1 : 0}"
+    count              = "${var.vms_disks == true ? 1 : 0}"
     managed_disk_id    = azurerm_managed_disk.myManagedDisk.id
     virtual_machine_id = azurerm_linux_virtual_machine.myVM[count.index].id
     lun                = "${count.index  + 10}"
