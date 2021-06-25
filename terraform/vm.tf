@@ -56,7 +56,7 @@ resource "azurerm_managed_disk" "myManagedDisk" {
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "myDataDisk" {
-    count              = length(vms_disks_index_number)
+    count              = length(var.vms_disks_index_number)
     managed_disk_id    = azurerm_managed_disk.myManagedDisk.id
     virtual_machine_id = azurerm_linux_virtual_machine.myVM["${var.vms_disks_index_number[count.index]}"].id
     lun                = "${count.index  + 10}"
