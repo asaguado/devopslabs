@@ -35,9 +35,14 @@ variable "vms_disks" {
   default = [ 0, 0, 0, 1]
 }
 
-# adminuser
 variable "admin_username" {
   description = "Admin username (no root)"  
   type = string
   default = "kubeadmin"
+}
+
+variable "disk_size" {
+  description = "Admin username (no root)"  
+  type = number
+  default = 10
 }
