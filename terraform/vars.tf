@@ -29,20 +29,20 @@ variable "vms" {
   default = [ "master", "worker01", "worker02", "nfs" ]
 }
 
-variable "vms_disks" {
+variable "vms_disks_index_number" {
   description = "Discos en máquinas virtuales"
-  type = list(bool)
-  default = [ false, false, false, true]
-}
-
-variable "admin_username" {
-  description = "Admin username (no root)"  
-  type = string
-  default = "kubeadmin"
+  type = list(number)
+  default = [3]
 }
 
 variable "disk_size" {
   description = "Admin username (no root)"  
   type = number
   default = 10
+}
+
+variable "admin_username" {
+  description = "Admin username (no root)"  
+  type = string
+  default = "kubeadmin"
 }
