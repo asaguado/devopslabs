@@ -29,6 +29,12 @@ variable "vms" {
   default = [ "master", "worker01", "worker02", "nfs" ]
 }
 
+variable "vms_disks" {
+  description = "Discos en máquinas virtuales"
+  type = list(string)
+  default = [ 0, 0, 0, 1]
+}
+
 # adminuser
 variable "admin_username" {
   description = "Admin username (no root)"  
