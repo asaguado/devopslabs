@@ -2,8 +2,10 @@
 
 # VG (volume group)
 vg_name: 'data_vg' # Name of volume group
-# /dev/sdb in local; /dev/sdc in azure
-pvs_name: '/dev/sdb' # Physical volume created using partition. eg (/dev/sdb1 or /dev/sdc1)
+# local.lab /dev/sdb in local
+#pvs_name: '/dev/sdb' # Physical volume created using partition. eg (/dev/sdb1 or /dev/sdc1)
+# azure.lab /dev/sdc in azure
+pvs_name: '/dev/sdc' # Physical volume created using partition. eg (/dev/sdb1 or /dev/sdc1)
 physical_extent_size: '8' # The size of the physical extent. eg (8MB, 32MB,...)
 
 # LV (logical volume)
