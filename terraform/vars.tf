@@ -27,7 +27,8 @@ variable "vm_size" {
 variable "vms" {
   description = "List of virtual machines to install"
   type = list(string)
-  default = [ "master", "worker01", "worker02", "nfs" ]
+  default = [ "master", "worker01"]
+  #default = [ "master", "worker01", "worker02", "nfs" ]  
 }
 
 # "master"=0, "worker01"=1, "worker02"=2, "nfs"=3
