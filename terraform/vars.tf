@@ -20,7 +20,7 @@ variable "subnet_address_prefixes" {
 variable "vm_size" {
   description = "Size of the Virtual Mahines"  
   type = string
-  default = "Standard_D1_v2" # 1 CPU, 3.5 GB RAM, 50 GB SS, NIC 1 / moderado
+  default = "Standard_D2_v3"
 }
 
 # List of virtual machines to install
