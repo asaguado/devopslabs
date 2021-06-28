@@ -17,6 +17,7 @@
     rich_rule: "rule family=ipv4 source address={{ item }}/32 accept"
     state: enabled
     permanent: yes
+    immediate: yes    
   with_items:
     - "{{ kubernetes_workers }}"
   become: yes
@@ -29,6 +30,7 @@
     rich_rule: "rule family=ipv4 source address={{ item }}/16 accept"
     state: enabled
     permanent: yes
+    immediate: yes    
     zone: public
   with_items:
     - "{{ kubernetes_container_ip }}"
