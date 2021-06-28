@@ -7,6 +7,6 @@
     name: "{{ item }}"
     state: started
     enabled: yes
-    masked: no
+    daemon_reload: yes
   with_items:
     - "{{ nfs_services }}"

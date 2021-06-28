@@ -19,11 +19,11 @@
     name: "{{ item }}"
     state: started
     enabled: yes
-    masked: no
+    daemon_reload: yes
   become: yes
   with_items:
-    - "{{ time_services }}"    
-        
+    - "{{ time_services }}"
+
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp
   become: yes
