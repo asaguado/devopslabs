@@ -7,7 +7,7 @@ variable "location" {
 variable "storage_account" {
   type = string
   description = "Nombre para la storage account"
-  default = "unir"
+  default = "storagejgyztsh73y8p"
 }
 
 variable "public_key_path" {

@@ -33,7 +33,7 @@ resource "random_id" "id" {
 resource "azurerm_storage_account" "myStorageAccount" {
   # storage account name is UNIQUE in all Azure, can only consist of
   # lowercase letters and numbers, and must be between 3 and 24 characters long
-  name                     = "storagejgyztsh73y8p"
+  name                     = var.storage_account
   #name                     = "storage" + random_id.id.hex  
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
