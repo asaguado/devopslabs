@@ -35,7 +35,7 @@ variable "vms" {
 variable "vms_disks_index_number" {
   description = "Managed disk in Virtual Machines"
   type = list(number)
-  default = [3]
+  default = [0]
 }
 
 # Managed disk size in GB
