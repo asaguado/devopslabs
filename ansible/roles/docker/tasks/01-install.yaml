@@ -2,21 +2,30 @@
 
 ## INSTALL DOCKER ##
 
-- name: Set the stable docker repository
-  dnf: 
-    enablerepo: "{{ docker_repo }}"
-    state: present
-    update_cache: yes    
-  become: yes
+#- name: Set the stable docker repository
+#  dnf: 
+#    enablerepo: "{{ docker_repo }}"
+#    state: present
+#    update_cache: yes    
+#  become: yes
 
 # Add docker repo
 #- name: Add docker repo
 #  become: yes
 #  command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 
-- name: Install Docker
+# add docker repo (1/2)
+- name: add docker repo (1/2)
+  copy:
+    src: "{{ item.file }}"
+    dest: "{{ item.path }}"
+  with_items:
+    - { file: 'docker.repo', path: '/etc/yum.repos.d/docker.repo'}
+  become: yes  
+
+- name: Install Docker (2/2)
   dnf:
-    enablerepo: https://download.docker.com/linux/centos/docker-ce.repo
+    #enablerepo: https://download.docker.com/linux/centos/docker-ce.repo
     update_cache: yes
     name: docker-ce
     state: present
