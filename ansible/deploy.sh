@@ -2,10 +2,10 @@
 # Automatizando el despliegue de kubernetes (Ansible)
 
 # Tareas previas de configuración (master y worker)
-ansible-playbook -i hosts -l master:workers 01-initial-conf.yaml
+#ansible-playbook -i hosts -l master:workers 01-initial-conf.yaml
 
 # Instalación del servidor NFS (nfs) 02-install-nfs.yaml
-ansible-playbook -i hosts -l nfs 02-install-nfs.yaml
+#ansible-playbook -i hosts -l nfs 02-install-nfs.yaml
 
 # Tareas comunes a realizar en el nodo master y los workers (master y worker)
 ansible-playbook -i hosts -l master:workers 03-common-tasks.yaml

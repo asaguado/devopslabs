@@ -30,8 +30,6 @@
 - name: add permanent masquerade
   firewalld:
     masquerade: 'yes'
-    state: enabled        
-    permanent: yes
     immediate: yes    
   become: yes  
 
