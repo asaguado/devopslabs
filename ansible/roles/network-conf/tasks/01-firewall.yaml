@@ -14,12 +14,12 @@
 # Enable firewalld service
 - name: enable firewalld
   become: yes
-  command: /usr/bin/systemctl enable chronyd
+  command: /usr/bin/systemctl enable firewalld
 
 # Start firewalld service
 - name: start firewalld 
   become: yes
-  command: /usr/bin/systemctl start chronyd      
+  command: /usr/bin/systemctl start firewalld    
 
 # Activate transparent masquerading
 - name: activate transparent masquerading
