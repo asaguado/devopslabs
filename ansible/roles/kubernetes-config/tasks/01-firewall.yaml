@@ -44,6 +44,13 @@
 #  become: yes
 
 # Enable firewalld service
-- name: enable firewalld
+#- name: enable firewalld
+#  become: yes
+#  command: firewall-cmd --reload
+
+# Reload 'firewalld' service (2/2)
+- name: reload firewall service (2/2)
   become: yes
-  command: firewall-cmd --reload
+  systemd:
+    name: firewalld
+    state: reloaded  

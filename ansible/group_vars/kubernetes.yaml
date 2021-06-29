@@ -9,6 +9,6 @@ kubernetes_firewall_ports: ['6443/tcp','2379-2380/tcp','10250/tcp','10251/tcp','
 #kubernetes_container_ip: [172.17.0.0]
 #azure.lab
 kubernetes_workers: [10.0.1.11]
-kubernetes_pod_network: [10.1.0.0]
+kubernetes_pod_network: '10.1.0.0'
 kubernetes_container_ip: [172.17.0.0]
 

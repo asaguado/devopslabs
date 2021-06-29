@@ -19,4 +19,4 @@
 # Start docker service
 - name: Start docker service
   become: yes
-  command: systemctl start docker     
+  command: systemctl start docker
