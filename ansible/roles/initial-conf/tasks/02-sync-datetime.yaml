@@ -16,9 +16,11 @@
 # Make sure a chrony service unit is enabled and running
 - name: enable chrony service
   service:
-    name: chrony
+    name: chronyd
     state: started
-  become: yes    
+  become: yes
+  become_method: sudo
+  become_user: root    
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp
