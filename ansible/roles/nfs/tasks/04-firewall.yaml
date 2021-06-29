@@ -22,8 +22,3 @@
     - "{{ nfs_firewall }}"
 
 # reload 'firewall' service
-- name: reload firewall service
-  become: yes
-  systemd:
-    name: firewalld
-    state: reloaded
