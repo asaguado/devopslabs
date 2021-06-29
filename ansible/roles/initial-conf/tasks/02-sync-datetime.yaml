@@ -14,11 +14,21 @@
   become: yes    
 
 # Make sure a chrony service unit is enabled and running
-- name: enable chrony service
-  service:
-    name: chronyd
-    state: started
+#- name: enable chrony service
+#  service:
+#    name: chronyd
+#    state: started
+#  become: yes
+
+# Enable NTP (Network Time Protocol) to sync the system date/hour
+- name: enable chronyd
   become: yes
+  command: /usr/bin/systemctl enable chronyd
+
+# Enable NTP (Network Time Protocol) to sync the system date/hour
+- name: start chronyd 
+  become: yes
+  command: /usr/bin/systemctl start chronyd  
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp
