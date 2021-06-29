@@ -1,15 +1,25 @@
 ---
 
 # Make sure a 'firewalld' service unit is enabled and running
-- name: make sure a firewall service is enabled and running
-  systemd:
-    name: "{{ item }}"
-    state: started
-    enabled: yes
-    masked: no
+#- name: make sure a firewall service is enabled and running
+#  systemd:
+#    name: "{{ item }}"
+#    state: started
+#    enabled: yes
+#    masked: no
+#  become: yes
+#  with_items:
+#    - "firewalld"  
+
+# Enable firewalld service
+- name: enable firewalld
   become: yes
-  with_items:
-    - "firewalld"  
+  command: /usr/bin/systemctl enable chronyd
+
+# Start firewalld service
+- name: start firewalld 
+  become: yes
+  command: /usr/bin/systemctl start chronyd      
 
 # Activate transparent masquerading
 - name: activate transparent masquerading
