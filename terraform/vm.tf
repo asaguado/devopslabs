@@ -58,7 +58,7 @@ resource "azurerm_linux_virtual_machine" "myVM" {
     }
 
     #custom_data = base64encode(data.local_file.cloudinit.content)
-    user_data      = data.template_file.user_data.rendered    
+    custom_data      = data.template_file.user_data.rendered    
 }
 
 resource "azurerm_managed_disk" "myManagedDisk" {
