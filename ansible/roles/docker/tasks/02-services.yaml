@@ -1,11 +1,22 @@
 ---
-
+# [root@host ~]# systemctl enable docker
+# [root@host ~]# systemctl start docker
 # Make sure a docker service is enabled and running
-- name: enable services
-  systemd:
-    name: "{{ item }}"
-    state: started
-    enabled: yes
+#- name: enable services
+#  systemd:
+#    name: "{{ item }}"
+#    state: started
+#    enabled: yes
+#  become: yes
+#  with_items:
+#    - "{{ docker_services }}"
+
+# Enable docker service
+- name: Enable docker service
   become: yes
-  with_items:
-    - "{{ docker_services }}"
+  command: systemctl enable docker
+
+# Start docker service
+- name: Start docker service
+  become: yes
+  command: systemctl start docker     

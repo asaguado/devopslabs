@@ -22,16 +22,6 @@
     state: present
   become: yes    
 
-# Enable docker service
-- name: enable docker
-  become: yes
-  command: /usr/bin/systemctl enable docker
-
-# Start docker service
-- name: start docker
-  become: yes
-  command: /usr/bin/systemctl start docker     
-
 # install the latest version of docker (1/2)
 #- name: install the latest version of docker (1/2)
 #  dnf:
