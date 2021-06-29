@@ -2,19 +2,40 @@
 
 ## INSTALL DOCKER ##
 
-# install the latest version of docker (1/2)
-- name: install the latest version of docker (1/2)
-  dnf:
+- name: Set the stable docker repository
+  dnf: 
     enablerepo: "{{ docker_repo }}"
-    name: "{{ docker_rpms }}"
     state: present
+    update_cache: yes    
+
+- name: Install Docker
+  dnf:
+    name: docker-ce
+    state: present
+
+# Enable docker service
+- name: enable docker
   become: yes
+  command: /usr/bin/systemctl enable docker
+
+# Start docker service
+- name: start docker
+  become: yes
+  command: /usr/bin/systemctl start docker     
+
+# install the latest version of docker (1/2)
+#- name: install the latest version of docker (1/2)
+#  dnf:
+#    enablerepo: "{{ docker_repo }}"
+#    name: "{{ docker_rpms }}"
+#    state: present
+#  become: yes
 
 # make sure a docker service is enabled and running (2/2)
-- name: make sure a docker service is enabled and running (2/2)
-  systemd:
-    name: docker
-    state: started
-    enabled: yes
-    masked: no
-  become: yes
+#- name: make sure a docker service is enabled and running (2/2)
+#  systemd:
+#    name: docker
+#    state: started
+#    enabled: yes
+#    masked: no
+#  become: yes
