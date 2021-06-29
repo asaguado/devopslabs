@@ -29,8 +29,9 @@
 # Add permanent masquerade
 - name: add permanent masquerade
   firewalld:
-    masquerade: 'yes'
-    immediate: yes    
+    masquerade: yes
+    state: enabled
+    permanent: yes
   become: yes  
 
 # Reload 'firewalld' service
