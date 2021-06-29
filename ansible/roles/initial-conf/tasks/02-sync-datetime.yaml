@@ -13,21 +13,13 @@
     state: latest
   become: yes    
 
-
 # Make sure a chrony service unit is enabled and running
 - name: enable chrony service
-  systemd:
+  service:
     name: chronyd
     state: started
     enabled: yes
   become: yes    
-
-- name: NGINX - enable and start nginx service
-  service:
-    name: chronyd
-    enabled: yes
-    state: started
-  become: yes 
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp
