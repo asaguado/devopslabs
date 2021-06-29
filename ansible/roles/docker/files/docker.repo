@@ -1,6 +1,6 @@
 [docker]
 name=Docker
-baseurl=https://download.docker.com/linux/centos/docker-ce.repo
+baseurl=https://download.docker.com/linux/centos
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
