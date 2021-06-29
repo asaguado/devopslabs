@@ -19,7 +19,7 @@
     permanent: yes
     immediate: yes    
   with_items:
-    - 10.0.1.11
+    - "{{ kubernetes_pod_network }}"
   become: yes
 
 # Allow access from containers to localhost (1/2)
@@ -33,7 +33,7 @@
     immediate: yes    
     zone: public
   with_items:
-    - 172.17.0.0
+    - "{{ kubernetes_container_ip }}"
   become: yes  
 
 # Reload 'firewalld' service (2/2)
