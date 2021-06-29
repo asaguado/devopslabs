@@ -41,7 +41,7 @@ resource "azurerm_network_interface" "myNic" {
   resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
-    name                           = "ipconf-${var.vms[count.index]}"
+    name                           = "nic-config-${var.vms[count.index]}"
     subnet_id                      = azurerm_subnet.mySubnet.id
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.${count.index + 10}"
@@ -58,7 +58,7 @@ resource "azurerm_network_interface" "myNic" {
 
 resource "azurerm_public_ip" "myPublicIp" {
   count               = length(var.vms)  
-  name                = "vmip-${var.vms[count.index]}"  
+  name                = "public-ip-${var.vms[count.index]}"  
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Dynamic"

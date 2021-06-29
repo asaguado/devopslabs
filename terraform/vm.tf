@@ -2,16 +2,29 @@
 # Creamos una máquina virtual
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine
 
+# configuracion de usuario con cloud_init
+data "template_file" "user_data" {
+   template = file("${path.module}/cloud-init_user_data.cfg")
+}
+
+# Data template Bash bootstrapping file
+# https://medium.com/microsoftazure/custom-azure-vm-scale-sets-with-terraform-and-cloud-init-6a592dc41523
+#data "local_file" "cloudinit" {
+#    filename = "${path.module}/cloudinit.conf"
+#}
+
 resource "azurerm_linux_virtual_machine" "myVM" {
     count               = length(var.vms)
     name                = "vm-${var.vms[count.index]}"
     computer_name       = "${var.vms[count.index]}"
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
+
     size                = var.vm_size
     admin_username      = var.admin_username
-    network_interface_ids = [element(azurerm_network_interface.myNic.*.id, count.index),]
-    disable_password_authentication = true
+    disable_password_authentication = true        
+
+    network_interface_ids = [element(azurerm_network_interface.myNic.*.id, count.index),]    
 
     admin_ssh_key {
         username   = var.admin_username
@@ -44,6 +57,8 @@ resource "azurerm_linux_virtual_machine" "myVM" {
         environment = "dev"
     }
 
+    #custom_data = base64encode(data.local_file.cloudinit.content)
+    user_data      = data.template_file.user_data.rendered    
 }
 
 resource "azurerm_managed_disk" "myManagedDisk" {

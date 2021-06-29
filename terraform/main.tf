@@ -16,7 +16,7 @@ terraform {
 # Resource group
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
 resource "azurerm_resource_group" "rg" {
-  name     = "kubernetes_rg"
+  name     = "kubernetes_resources"
   location = var.location
 
   tags = {
