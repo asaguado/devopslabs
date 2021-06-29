@@ -9,13 +9,15 @@
     update_cache: yes    
   become: yes
 
-# Enable docker service
-- name: enable docker
-  become: yes
-  command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+# Add docker repo
+#- name: Add docker repo
+#  become: yes
+#  command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 
 - name: Install Docker
   dnf:
+    enablerepo: https://download.docker.com/linux/centos/docker-ce.repo
+    update_cache: yes
     name: docker-ce
     state: present
   become: yes    
