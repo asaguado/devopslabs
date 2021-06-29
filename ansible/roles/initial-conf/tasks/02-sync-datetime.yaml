@@ -16,8 +16,8 @@
 # Make sure a chrony service unit is enabled and running
 - name: enable chrony service
   service:
-    name: chronyd
-    state: reloaded
+    name: chrony
+    state: started
   become: yes    
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour

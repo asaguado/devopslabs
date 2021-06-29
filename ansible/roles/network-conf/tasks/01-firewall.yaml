@@ -3,10 +3,13 @@
 # Make sure a 'firewalld' service unit is enabled and running
 - name: make sure a firewall service is enabled and running
   systemd:
-    name: firewalld
-    state: started        
+    name: "{{ item }}"
+    state: started
     enabled: yes
+    masked: no
   become: yes
+  with_items:
+    - "firewalld"  
 
 # Activate transparent masquerading
 - name: activate transparent masquerading
@@ -19,6 +22,7 @@
     masquerade: 'yes'
     state: enabled        
     permanent: yes
+    immediate: yes    
   become: yes  
 
 # Reload 'firewalld' service
