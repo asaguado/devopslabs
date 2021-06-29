@@ -19,7 +19,7 @@
     name: chronyd
     state: started
     enabled: yes
-  become: yes
+  become: true
 
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour
