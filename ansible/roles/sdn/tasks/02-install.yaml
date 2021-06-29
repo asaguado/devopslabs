@@ -1,3 +1,3 @@
     - name: initialize the cluster
-      shell: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+      shell: kubectl apply -f {{ sdn_configmap }}
       become: yes

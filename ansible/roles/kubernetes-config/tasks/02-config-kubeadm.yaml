@@ -9,4 +9,4 @@
   args:
     chdir: $HOME
     creates: cluster_initialized.txt   
-  become: yes   
+  become: yes
