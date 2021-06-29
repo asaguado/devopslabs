@@ -20,18 +20,15 @@
 #    state: started
 #  become: yes
 
-- name: restart chronyd
-  service: name=chronyd state=restarted
-
 # Enable chronyd service
-#- name: enable chronyd
-#  become: yes
-#  command: /usr/bin/systemctl enable chronyd
+- name: enable chronyd
+  become: yes
+  command: /usr/bin/systemctl enable chronyd
 
 # Start chronyd service
-#- name: start chronyd 
-#  become: yes
-#  command: /usr/bin/systemctl start chronyd  
+- name: start chronyd 
+  become: yes
+  command: /usr/bin/systemctl start chronyd  
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp

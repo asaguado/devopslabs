@@ -1,5 +1,15 @@
 ---
 
+# Enable firewalld service
+- name: enable firewalld
+  become: yes
+  command: /usr/bin/systemctl enable firewalld
+
+# Start firewalld service
+- name: start firewalld 
+  become: yes
+  command: /usr/bin/systemctl start firewalld
+
 # firewall configuration for http
 - name: firewall configuration
   become: yes
