@@ -7,11 +7,13 @@
     enablerepo: "{{ docker_repo }}"
     state: present
     update_cache: yes    
+  become: yes
 
 - name: Install Docker
   dnf:
     name: docker-ce
     state: present
+  become: yes    
 
 # Enable docker service
 - name: enable docker
