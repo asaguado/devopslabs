@@ -17,9 +17,9 @@
 - name: enable services
   systemd:
     name: "{{ item }}"
-    state: started
+    state: restarted
+    daemon_reload: yes    
     enabled: yes
-    daemon_reload: yes
   become: yes
   with_items:
     - "{{ time_services }}"
