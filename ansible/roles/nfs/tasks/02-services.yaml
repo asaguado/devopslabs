@@ -1,12 +1,11 @@
 ---
 
-# Make sure a chrony service unit is enabled and running
-- name: enable services
+# Enable nfs-server service
+- name: enable nfs-server
   become: yes
-  systemd:
-    name: "{{ item }}"
-    state: started
-    enabled: yes
-    daemon_reload: yes
-  with_items:
-    - "{{ nfs_services }}"
+  command: /usr/bin/systemctl enable nfs-server
+
+# Start nfs-server service
+- name: start nfs-server
+  become: yes
+  command: /usr/bin/systemctl start nfs-server    
