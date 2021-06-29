@@ -9,8 +9,13 @@
     - "{{ sdn_firewall_ports }}"
 
 # reload 'firewalld' service (2/2)
-- name: reload 'firewalld' service (2/2)
-  become: yes    
-  systemd:
-    name: firewalld
-    state: reloaded
+#- name: reload 'firewalld' service (2/2)
+#  become: yes    
+#  systemd:
+#    name: firewalld
+#    state: reloaded
+
+# Reload 'firewalld' service (2/2)
+- name: reload firewall service (2/2)
+  become: yes
+  command: firewall-cmd --reload

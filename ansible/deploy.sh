@@ -11,10 +11,10 @@
 #ansible-playbook -i hosts -l master:workers 03-common-tasks.yaml
 
 # Configurando kubernetes en el nodo master (master)
-ansible-playbook -i hosts -l master 04-config-kubernetes.yaml
+#ansible-playbook -i hosts -l master 04-config-kubernetes.yaml
 
 # Instalando la SDN (master)
-#ansible-playbook -i hosts -l master 05-install-sdn.yaml
+ansible-playbook -i hosts -l master 05-install-sdn.yaml
 
 # Configurando los workers (worker)
 #ansible-playbook -i hosts -l master:workers 06-config-workers.yaml
