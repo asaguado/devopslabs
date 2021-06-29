@@ -19,7 +19,6 @@
     name: chronyd
     state: started
   become: yes
-  become_method: su
 
 # Enable NTP (Network Time Protocol) to sync the system date/hour
 - name: enable ntp
