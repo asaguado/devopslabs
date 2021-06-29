@@ -18,7 +18,6 @@
   service:
     name: chronyd
     state: started
-  become_user: root    
   become: yes
   become_method: su
 
