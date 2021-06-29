@@ -10,7 +10,7 @@
 # Data template Bash bootstrapping file
 # https://medium.com/microsoftazure/custom-azure-vm-scale-sets-with-terraform-and-cloud-init-6a592dc41523
 data "local_file" "user_data" {
-    filename = "${path.module}/cloudinit.conf"
+    filename = "${path.module}/cloud-init_user_data.cfg"
 }
 
 resource "azurerm_linux_virtual_machine" "myVM" {
