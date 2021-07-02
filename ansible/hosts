@@ -1,15 +1,15 @@
-# hosts
-# Inventario deseable utilizando 4 servidores de 2 cpu en Azure
-# Inventario limtiado por recursos: 2 servidores de tipo ""Standard_A2_v2" con 2 CPU y 4.0 GB RAM
+# localhosts
+# Inventario utilizando 2 servidores de 2 cpu y 2Gb ram en 
+# máquinas CentOS8 virtualizadas con VirtualBox en local
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
-ansible_user=kubeadmin
+ansible_user=ansible
 
 [master]
-master
+master ansible_host=192.168.1.100
 
 [workers]
-worker01
+worker01 ansible_host=192.168.1.101
 
 [nfs]
-master
+master ansible_host=192.168.1.100
