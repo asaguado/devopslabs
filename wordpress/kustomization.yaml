@@ -19,15 +19,15 @@
 # kubectl get deploy,service,pods -n wordpress
 # curl -I -H 'Host: wp.20.71.93.216.nip.io' 'http://20.71.93.216:32048/'
 resources:
-  #- wordpress-pv.yaml
-  #- wordpress-ns.yaml 
-  #- wordpress-pvc.yaml 
-  #- mariadb-pvc.yaml
+  - wordpress-pv.yaml
+  - wordpress-ns.yaml 
+  - wordpress-pvc.yaml 
+  - mariadb-pvc.yaml
   # kubectl get pv,pvc -n wordpress  
-  #- mariadb-srv.yaml 
-  #- wordpress-srv.yaml 
-  #- wordpress-ingress.yaml 
-  #- mariadb-secret.yaml 
+  - mariadb-srv.yaml 
+  - wordpress-srv.yaml 
+  - wordpress-ingress.yaml 
+  - mariadb-secret.yaml 
   - mariadb-deployment.yaml
   - wordpress-deployment.yaml
   # kubectl get pvc,services,deploy,ingress -n wordpress
