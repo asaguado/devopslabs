@@ -1,0 +1,24 @@
+# Install Wordpress
+# kubectl -- apply -f secrets.yaml
+# kubectl -- apply -f mysql-deployment.yaml
+# kubectl -- apply -f wordpress-deployment.yaml
+# kubectl -- apply -f ingress.yaml
+# kubectl -- apply -f configmap.yaml
+- hosts: master
+  become: yes
+  tasks:
+    - name: install secrets
+      shell: kubectl -- apply -f secrets.yaml
+ 
+    - name: install mysql
+      shell: kubectl -- apply -f mysql-deployment.yaml
+
+    - name: install wordpress
+      shell: kubectl -- apply -f wordpress-deployment.yaml
+
+    - name: install ingress
+      shell: kubectl -- apply -f ingress.yaml
+
+    - name: install configmap
+      shell: kubectl -- apply -f configmap.yaml   
+
