@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,13 +8,16 @@ metadata:
     app: wordpress
     type: frontend
   annotations:
-    kubernetes.io/ingress.class: traefik
+      haproxy.org/path-rewrite: "/"
 spec:
   rules:
   - host: wp.20.71.93.216.nip.io
     http:
       paths:
       - path: /
+        pathType: "Prefix"
         backend:
-          serviceName: wordpress-service
-          servicePort: http-sv-port
+          service:
+            name: wordpress-service
+            port:
+              number: 80          
