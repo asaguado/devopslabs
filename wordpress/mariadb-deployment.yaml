@@ -8,13 +8,13 @@ metadata:
     type: database
 spec:
   replicas: 1
-    selector:
-      matchLabels:
-        app: mariadb-deployment
-    template:
-      metadata:
-        labels:
-          app: mariadb-deployment
+  selector:
+    matchLabels:
+      app: mariadb-deployment
+  template:
+    metadata:
+      labels:
+         app: mariadb-deployment
   template:
     metadata:
       labels:
