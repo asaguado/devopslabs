@@ -1,0 +1,8 @@
+# Apply and Verify
+# kubectl apply -k ./
+# kubectl get pods --namespace=wordpress -o wide
+# kubectl get deploy,service,pods -n wordpress
+resources:
+  - mysql-deployment.yaml
+  - wordpress-namespace.yaml   
+  - wordpress-deployment.yaml

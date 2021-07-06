@@ -9,20 +9,20 @@
   tasks:
 
     - name: install namespace
-      shell: kubectl -- apply -f wordpress-app/namespace.yaml
+      shell: kubectl apply -f wordpress-app/namespace.yaml
 
     - name: install secrets
-      shell: kubectl -- apply -f wordpress-app/secrets.yaml
+      shell: kubectl apply -f wordpress-app/secrets.yaml
  
     - name: install mysql
-      shell: kubectl -- apply -f wordpress-app/mysql-deployment.yaml
+      shell: kubectl apply -f wordpress-app/mysql-deployment.yaml
 
     - name: install wordpress
-      shell: kubectl -- apply -f wordpress-app/wordpress-deployment.yaml
+      shell: kubectl apply -f wordpress-app/wordpress-deployment.yaml
 
     - name: install ingress
-      shell: kubectl -- apply -f wordpress-app/ingress.yaml
+      shell: kubectl apply -f wordpress-app/ingress.yaml
 
     - name: install configmap
-      shell: kubectl -- apply -f wordpress-app/configmap.yaml   
+      shell: kubectl apply -f wordpress-app/configmap.yaml   
 

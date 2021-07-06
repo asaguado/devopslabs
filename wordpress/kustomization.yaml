@@ -1,0 +1,31 @@
+# Apply and Verify
+# kubectl apply -k ./
+# kubectl get pods --namespace=wordpress -o wide
+# kubectl get deploy,service,pods -n wordpress
+# https://github.com/josedom24/kubernetes/tree/master/ejemplos/wordpress2
+# https://www.josedomingo.org/pledin/2019/04/kubernetes-wordpress-almacenamiento-persistente/
+# kubectl create -f wordpress-pv.yaml
+# kubectl create -f wordpress-ns.yaml 
+# kubectl create -f wordpress-pvc.yaml 
+# kubectl create -f mariadb-pvc.yaml
+# kubectl get pv,pvc -n wordpress  
+# kubectl create -f mariadb-srv.yaml 
+# kubectl create -f wordpress-srv.yaml 
+# kubectl create -f wordpress-ingress.yaml 
+# kubectl create -f mariadb-secret.yaml 
+# kubectl create -f mariadb-deployment.yaml
+# kubectl create -f wordpress-deployment.yaml
+# kubectl get pvc,services,deploy,ingress -n wordpress
+resources:
+  - wordpress-pv.yaml
+  - wordpress-ns.yaml 
+  - wordpress-pvc.yaml 
+  - mariadb-pvc.yaml
+  # kubectl get pv,pvc -n wordpress  
+  - mariadb-srv.yaml 
+  - wordpress-srv.yaml 
+  - wordpress-ingress.yaml 
+  - mariadb-secret.yaml 
+  - mariadb-deployment.yaml
+  - wordpress-deployment.yaml
+  # kubectl get pvc,services,deploy,ingress -n wordpress
