@@ -29,5 +29,5 @@ resources:
   #- wordpress-ingress.yaml 
   #- mariadb-secret.yaml 
   - mariadb-deployment.yaml
-  #- wordpress-deployment.yaml
+  - wordpress-deployment.yaml
   # kubectl get pvc,services,deploy,ingress -n wordpress
