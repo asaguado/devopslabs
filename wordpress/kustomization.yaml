@@ -16,6 +16,8 @@
 # kubectl create -f mariadb-deployment.yaml
 # kubectl create -f wordpress-deployment.yaml
 # kubectl get pvc,services,deploy,ingress -n wordpress
+# kubectl get deploy,service,pods -n wordpress
+# curl -I -H 'Host: wp.20.71.93.216.nip.io' 'http://20.71.93.216:32048/'
 resources:
   - wordpress-pv.yaml
   - wordpress-ns.yaml 
