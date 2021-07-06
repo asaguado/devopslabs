@@ -8,6 +8,9 @@ metadata:
     type: frontend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress  
   template:
     metadata:
       labels:
