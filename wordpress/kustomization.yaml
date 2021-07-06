@@ -18,6 +18,7 @@
 # kubectl get pvc,services,deploy,ingress -n wordpress
 # kubectl get deploy,service,pods -n wordpress
 # curl -I -H 'Host: wp.20.71.93.216.nip.io' 'http://20.71.93.216:32048/'
+# sudo kubectl delete all --all -n wordpress
 resources:
   - wordpress-pv.yaml
   - wordpress-ns.yaml 
@@ -30,4 +31,4 @@ resources:
   - mariadb-secret.yaml 
   - mariadb-deployment.yaml
   - wordpress-deployment.yaml
-  # kubectl get pvc,services,deploy,ingress -n wordpress
+  # kubectl get pvc,services,deploy,ingress, pods -n wordpress
