@@ -16,7 +16,7 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /srv/nfs
+    path: /srv/nfs/wordpress
     server: 10.0.1.10
 
 ---
@@ -37,5 +37,5 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /srv/nfs
+    path: /srv/nfs/html
     server: 10.0.1.10    
