@@ -4,7 +4,11 @@
 # kubectl get deploy,service,pods -n wordpress
 # sudo kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
 resources:
-  - wordpress-ns.yaml  
-  - wordpress-pv.yaml  
-  - wordpress-pvc.yaml
-  - wordpress-deployment.yaml  
+  - wordpress-01-ns.yaml  
+  - wordpress-02-secrets.yaml    
+  - wordpress-03-pv.yaml  
+  - wordpress-04-pvc.yaml
+  - wordpress-05-deployment-wp.yaml  
+  - wordpress-06-deployment-mysql.yaml    
+  - wordpress-08-ingress.yaml    
+  - wordpress-09-configmap.yaml  

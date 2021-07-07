@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wordpress-ingress
+  namespace: wordpress-volumes
+  labels:
+    app: wordpress-volumes
+  annotations:
+      haproxy.org/path-rewrite: "/"
+spec:
+  rules:
+  - host: master
+    http:
+      paths:
+      - path: /wordpress
+        pathType: "Prefix"
+        backend:
+          service:
+            name: volumes-service
+            port:
+              number: 80
