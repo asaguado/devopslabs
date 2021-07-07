@@ -15,18 +15,26 @@ spec:
 
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
   name: mysql-pv-claim
   namespace: wordpress
   labels:
-    app: wordpress
+    app: wordpress  
 spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /srv/nfs
+    server: 10.0.1.10      
 
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
