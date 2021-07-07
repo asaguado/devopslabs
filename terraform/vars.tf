@@ -42,7 +42,7 @@ variable "vms_disks_index_number" {
 variable "disk_size" {
   description = "Admin username (no root)"  
   type = number
-  default = 10
+  default = 20
 }
 
 # Name of the no-root user

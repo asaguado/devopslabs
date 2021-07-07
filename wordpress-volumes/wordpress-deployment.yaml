@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-volumes
+  namespace: wordpress-volumes
+  labels:
+    app: wordpress-volumes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress-volumes
+  template:
+    metadata:
+      labels:
+        app: wordpress-volumes
+    spec:
+      containers:
+      - name: wordpress-volumes
+        image: quay.io/rhte_2019/webapp:v1
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80 
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: volumes-service
+    namespace: wordpress-volumes
+spec:
+    selector:
+      app: wordpress-volumes
+    ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: volumes-ingress
+  namespace: wordpress-volumes
+  labels:
+    app: wordpress-volumes
+  annotations:
+      haproxy.org/path-rewrite: "/"
+spec:
+  rules:
+  - host: foo-wordpress.bar
+    http:
+      paths:
+      - path: /wordpress
+        pathType: "Prefix"
+        backend:
+          service:
+            name: volumes-service
+            port:
+              number: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: haproxy-configmap
+  namespace: wordpress-volumes
+data:
+  servers-increment: "42"
+  ssl-redirect: "OFF"
