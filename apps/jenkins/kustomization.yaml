@@ -1,0 +1,15 @@
+# https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-kubernetes
+# sudo kubectl create namespace jenkins
+# sudo kubectl create -f jenkins-deployment.yaml --namespace jenkins
+# sudo kubectl get pods -n jenkins
+# sudo kubectl create -f jenkins-service.yaml --namespace jenkins
+# sudo kubectl get services --namespace jenkins
+# sudo kubectl get pods -n jenkins
+# sudo kubectl get pv,pvc,service,deploy,pods -n jenkins
+resources:
+  - jenkins-namespace.yaml
+  - jenkins-storage.yaml  
+  - jenkins-deployment.yaml
+  - jenkins-service.yaml
+  - jenkins-ingress.yaml
+  - jenkins-configmap-yaml

@@ -1,5 +1,6 @@
 # Apply and Verify
 # sudo kubectl apply -k ./
+# sudo kubectl apply -f wordpress-06-deployment-mysql.yaml
 # sudo kubectl get pods --namespace=wordpress -o wide
 # sudo kubectl get pv,pvc,service,deploy,pods -n wordpress
 # sudo kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'

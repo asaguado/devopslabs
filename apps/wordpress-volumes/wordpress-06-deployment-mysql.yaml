@@ -1,23 +1,23 @@
----
 apiVersion: v1
 kind: Service
 metadata:
-    name: wordpress-service
+    name: mysql-service
     namespace: wordpress
 spec:
     selector:
       app: wordpress
-      tier: frontend
+      tier: mysql
     ports:
     - name: http
       protocol: TCP
-      port: 80
-      targetPort: 80
----
+      port: 3306
+      targetPort: 3306
+
+---      
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-deployment
+  name: mysql-deployment
   namespace: wordpress
   labels:
     app: wordpress
@@ -26,37 +26,37 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-      tier: frontend
+      tier: mysql
   template:
     metadata:
       labels:
         app: wordpress
-        tier: frontend
+        tier: mysql
     spec:
       containers:
-      - name: wordpress
-        image: wordpress:5.2
+      - name: mysql
+        image: mysql:5.6
         ports:
-        - containerPort: 80
+        - containerPort: 3306
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 3306
           initialDelaySeconds: 5
           periodSeconds: 5
           successThreshold: 1
         env:
-        - name: WORDPRESS_DB_HOST
-          value: mysql-service
-        - name: WORDPRESS_DB_PASSWORD
+        - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-pass
               key: password
         volumeMounts:
-        - name: site-wordpress-pvc     
-          mountPath: "/var/www/html"
+        - name: site-mysql-pvc     
+          mountPath: "/var/lib/mysql"
       volumes:
-      - name: site-wordpress-pvc 
+      - name: site-mysql-pvc
         persistentVolumeClaim:
-          claimName: wordpress-pvc
+          claimName: mysql-pvc
+
+
