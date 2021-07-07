@@ -6,7 +6,8 @@ metadata:
     namespace: wordpress
 spec:
     selector:
-      app: mysql
+      app: wordpress
+      tier: mysql
     ports:
     - name: http
       protocol: TCP
@@ -19,16 +20,18 @@ metadata:
   name: mysql-deployment
   namespace: wordpress
   labels:
-    app: mysql
+    app: wordpress
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: wordpress
+      tier: mysql
   template:
     metadata:
       labels:
-        app: mysql
+        app: wordpress
+        tier: mysql
     spec:
       containers:
       - name: mysql
@@ -41,11 +44,4 @@ spec:
             secretKeyRef:
               name: mysql-pass
               key: password
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-persistent-storage
 

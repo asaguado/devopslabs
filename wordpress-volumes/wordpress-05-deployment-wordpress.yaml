@@ -7,6 +7,7 @@ metadata:
 spec:
     selector:
       app: wordpress
+      tier: frontend
     ports:
     - name: http
       protocol: TCP
@@ -25,10 +26,12 @@ spec:
   selector:
     matchLabels:
       app: wordpress
+      tier: frontend
   template:
     metadata:
       labels:
         app: wordpress
+        tier: frontend
     spec:
       containers:
       - name: wordpress
@@ -43,10 +46,3 @@ spec:
             secretKeyRef:
               name: mysql-pass
               key: password
-        volumeMounts:
-        - name: wordpress-persistent-storage
-          mountPath: /var/www/html
-      volumes:
-      - name: wordpress-persistent-storage
-        persistentVolumeClaim:
-          claimName: wordpress-persistent-storage
