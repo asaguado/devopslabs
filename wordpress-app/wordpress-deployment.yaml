@@ -41,7 +41,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wp-pv
+  name: wp-pvc
   namespace: wordpress
 spec:
   storageClassName: nfs
@@ -92,4 +92,4 @@ spec:
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: wp-pv-claim
+          claimName: wp-pvc
