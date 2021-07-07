@@ -46,3 +46,10 @@ spec:
             secretKeyRef:
               name: mysql-pass
               key: password
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wordpress-persistent-storage
