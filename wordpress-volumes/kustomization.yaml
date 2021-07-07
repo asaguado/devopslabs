@@ -8,10 +8,10 @@
 # kubectl delete pvc --all 
 # - wordpress-04-pvc.yaml
 resources:
-  - wordpress-01-ns.yaml  
-  - wordpress-02-secrets.yaml    
-  - wordpress-03-pv.yaml  
-  - wordpress-05-deployment-wp.yaml  
-  - wordpress-06-deployment-mysql.yaml    
-  - wordpress-08-ingress.yaml    
-  - wordpress-09-configmap.yaml  
+  - wordpress-01-ns.yaml
+  - wordpress-02-secrets.yaml
+  - wordpress-03-pv.yaml
+  - wordpress-05-deployment-wp.yaml
+  - wordpress-06-deployment-mysql.yaml
+  - wordpress-08-ingress.yaml
+  - wordpress-09-configmap.yaml
