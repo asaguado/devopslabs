@@ -21,12 +21,15 @@ spec:
         ports:
         - containerPort: 80
         readinessProbe:
-          httpGet:
-            path: /
-            port: 80 
+          tcpSocket:
+            port: 80
           initialDelaySeconds: 5
-          periodSeconds: 5
-          successThreshold: 1
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 20
         env:
         - name: WORDPRESS_DB_HOST
           value: mysql-service
