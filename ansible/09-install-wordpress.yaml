@@ -9,10 +9,10 @@
   tasks:
 
     - name: install namespace
-      shell: kubectl apply -f wordpress-app/namespace.yaml
+      shell: kubectl apply -f wordpress-app/wordpress-namespace.yaml
 
     - name: install secrets
-      shell: kubectl apply -f wordpress-app/secrets.yaml
+      shell: kubectl apply -f wordpress-app/mysql-secrets.yaml
  
     - name: install mysql
       shell: kubectl apply -f wordpress-app/mysql-deployment.yaml

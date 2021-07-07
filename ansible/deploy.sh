@@ -26,4 +26,4 @@ ansible-playbook -i hosts -l master 07-install-ingress-controler.yaml
 ansible-playbook -i hosts -l master 08-create-no-root-user.yaml
 
 # Instalamos la aplicación Wordpress (master)
-ansible-playbook -i hosts -l master 09-install-wordpress.yaml
+#ansible-playbook -i hosts -l master 09-install-wordpress.yaml
