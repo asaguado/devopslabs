@@ -38,6 +38,13 @@ spec:
         image: wordpress:5.2
         ports:
         - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
         env:
         - name: WORDPRESS_DB_HOST
           value: mysql-service
@@ -47,9 +54,9 @@ spec:
               name: mysql-pass
               key: password
         volumeMounts:
-        - mountPath: "/var/www/html"
-          name: wordpress-persistent-storage      
+        - name: site-wordpress-pvc     
+          mountPath: "/var/www/html"
       volumes:
-      - name: wordpress-persistent-storage 
+      - name: site-wordpress-pvc 
         persistentVolumeClaim:
-          claimName: wordpress-persistent-storage   
+          claimName: wordpress-pvc

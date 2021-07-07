@@ -38,20 +38,25 @@ spec:
         image: mysql:5.6
         ports:
         - containerPort: 3306
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3306
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-pass
               key: password
-        readinessProbe:
-          tcpSocket:
-            port: 3306
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 3306
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        volumeMounts:
+        - name: site-mysql-pvc     
+          mountPath: "/var/lib/mysql"
+      volumes:
+      - name: site-mysql-pvc
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+
 
