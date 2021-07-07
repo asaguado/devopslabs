@@ -12,7 +12,7 @@ resources:
   - wordpress-02-secrets.yaml
   - wordpress-03-pv.yaml
   - wordpress-04-pvc.yaml
-  - wordpress-08-ingress.yaml
-  - wordpress-09-configmap.yaml
   - wordpress-05-deployment-wordpress.yaml
-  - wordpress-06-deployment-mysql.yaml  
+  - wordpress-06-deployment-mysql.yaml    
+  - wordpress-07-ingress.yaml
+  - wordpress-08-configmap.yaml
