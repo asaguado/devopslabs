@@ -12,7 +12,6 @@ spec:
       protocol: TCP
       port: 3306
       targetPort: 3306
-
 ---      
 apiVersion: apps/v1
 kind: Deployment
@@ -44,7 +43,7 @@ spec:
               key: password
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: "/var/lib/mysql"
+          mountPath: /var/lib/mysql
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
