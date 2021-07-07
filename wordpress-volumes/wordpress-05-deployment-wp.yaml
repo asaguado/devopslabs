@@ -60,7 +60,8 @@ spec:
               key: password
         volumeMounts:
         - name: wordpress-persistent-storage
-          mountPath: /var/www/html
+          mountPath: "/var/www/html"
+          subPath: "wp-content"
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
