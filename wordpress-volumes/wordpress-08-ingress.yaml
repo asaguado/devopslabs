@@ -3,9 +3,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wordpress-ingress
-  namespace: wordpress-volumes
+  namespace: wordpress
   labels:
-    app: wordpress-volumes
+    app: wordpress
   annotations:
       haproxy.org/path-rewrite: "/"
 spec:

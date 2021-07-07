@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-deployment
-  namespace: wordpress-volumes
+  namespace: wordpress
   labels:
-    app: wordpress-volumes
+    app: wordpress
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress-volumes
+      app: wordpress
   template:
     metadata:
       labels:
-        app: wordpress-volumes
+        app: wordpress
     spec:
       containers:
-      - name: wordpress-volumes
+      - name: wordpress
         image: wordpress:5.2
         ports:
         - containerPort: 80
@@ -51,10 +51,10 @@ apiVersion: v1
 kind: Service
 metadata:
     name: wordpress-service
-    namespace: wordpress-volumes
+    namespace: wordpress
 spec:
     selector:
-      app: wordpress-volumes
+      app: wordpress
     ports:
     - name: http
       protocol: TCP

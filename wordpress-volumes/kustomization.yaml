@@ -1,7 +1,7 @@
 # Apply and Verify
 # kubectl apply -k ./
-# kubectl get pods --namespace=wordpress-volumes -o wide
-# kubectl get pv,pvc,service,deploy,pods -n wordpress-volumes
+# kubectl get pods --namespace=wordpress -o wide
+# kubectl get pv,pvc,service,deploy,pods -n wordpress
 # sudo kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
 # sudo kubectl delete all --all -n wordpress
 # kubectl delete pv volumen1 --grace-period=0 --force

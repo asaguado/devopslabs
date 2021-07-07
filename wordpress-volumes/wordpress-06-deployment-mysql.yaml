@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
-  namespace: wordpress-volumes
+  namespace: wordpress
   labels:
-    app: wordpress-volumes
+    app: wordpress
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress-volumes
+      app: wordpress
   template:
     metadata:
       labels:
-        app: wordpress-volumes
+        app: wordpress
     spec:
       containers:
-      - name: wordpress-volumes
+      - name: wordpress
         image: mysql:5.6
         ports:
         - containerPort: 3306
@@ -49,10 +49,10 @@ apiVersion: v1
 kind: Service
 metadata:
     name: mysql-service
-    namespace: wordpress-volumes
+    namespace: wordpress
 spec:
     selector:
-      app: wordpress-volumes
+      app: wordpress
     ports:
     - name: http
       protocol: TCP
