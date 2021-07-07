@@ -17,6 +17,6 @@ spec:
         pathType: "Prefix"
         backend:
           service:
-            name: volumes-service
+            name: wordpress-service
             port:
               number: 80
