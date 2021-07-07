@@ -2,7 +2,9 @@
 # kubectl apply -k ./
 # kubectl get pods --namespace=wordpress -o wide
 # kubectl get deploy,service,pods -n wordpress
+# sudo kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
 resources:
+  - mysql-secrets.yaml  
   - mysql-deployment.yaml
   - wordpress-namespace.yaml   
-  - wordpress-deployment.yaml
+  - wordpress-deployment.yaml  

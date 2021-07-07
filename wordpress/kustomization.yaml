@@ -19,6 +19,9 @@
 # kubectl get deploy,service,pods -n wordpress
 # curl -I -H 'Host: wp.20.71.93.216.nip.io' 'http://20.71.93.216:32048/'
 # sudo kubectl delete all --all -n wordpress
+# sudo kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
+# kubectl delete pv volumen1 --grace-period=0 --force
+# kubectl delete pvc --all 
 resources:
   - wordpress-pv.yaml
   - wordpress-ns.yaml 

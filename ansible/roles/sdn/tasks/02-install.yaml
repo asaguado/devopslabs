@@ -1,3 +1,4 @@
-    - name: initialize the cluster
-      shell: kubectl apply -f {{ sdn_configmap }}
-      become: yes
+- name: download and install sdn from projectcalico.org
+  become: yes
+  shell: kubectl apply -f {{ sdn_configmap }}
+      
