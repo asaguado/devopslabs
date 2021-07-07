@@ -10,7 +10,7 @@ metadata:
       haproxy.org/path-rewrite: "/"
 spec:
   rules:
-  - host: master
+  - host: wordpress.bar
     http:
       paths:
       - path: /wordpress
