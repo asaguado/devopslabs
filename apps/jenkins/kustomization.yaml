@@ -6,7 +6,8 @@
 # sudo kubectl create -f jenkins-service.yaml --namespace jenkins
 # sudo kubectl get services --namespace jenkins
 # sudo kubectl get pods -n jenkins
-# sudo kubectl get pv,pvc,service,deploy,pods -n jenkins
+# sudo kubectl get pv,pvc,service,deploy,pods,ingress -n jenkins
+# sudo kubectl delete all --all -n jenkins
 resources:
   - jenkins-namespace.yaml
   - jenkins-storage.yaml  

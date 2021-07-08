@@ -1,5 +1,5 @@
 # En el fichero vm.tf incluiremos la definición de la vm red que vayamos a crear.
-# Creamos una máquina virtual
+# Creamos todas las máquinas virtuales definidas en el fichero vars.tf
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine
 
 resource "azurerm_linux_virtual_machine" "myVM" {
@@ -47,29 +47,26 @@ resource "azurerm_linux_virtual_machine" "myVM" {
     }
 
     custom_data = base64encode(data.local_file.cloudinit.content)
-    #custom_data      = data.template_file.user_data.rendered    
 }
 
-# Data template Bash bootstrapping file
-# https://medium.com/microsoftazure/custom-azure-vm-scale-sets-with-terraform-and-cloud-init-6a592dc41523
+# User configuration with cloud_init
 data "local_file" "cloudinit" {
     filename = "${path.module}/cloudinit.conf"
 }
 
-# configuracion de usuario con cloud_init
-#data "template_file" "user_data" {
-#   template = file("${path.module}/cloud-init_user_data.cfg")
-#}
-
+# Creates managed disk.
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_disk
 resource "azurerm_managed_disk" "myManagedDisk" {
     name                 = "managed-disk-data"
     location             = azurerm_resource_group.rg.location
     resource_group_name  = azurerm_resource_group.rg.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
-    disk_size_gb         = 10
+    disk_size_gb         = var.disk_size
 }
 
+# Attaching a Disk to a Virtual Machine.
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_data_disk_attachment
 resource "azurerm_virtual_machine_data_disk_attachment" "myDataDisk" {
     count              = length(var.vms_disks_index_number)
     managed_disk_id    = azurerm_managed_disk.myManagedDisk.id

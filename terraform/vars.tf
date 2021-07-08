@@ -40,7 +40,7 @@ variable "vms_disks_index_number" {
 
 # Managed disk size in GB
 variable "disk_size" {
-  description = "Admin username (no root)"  
+  description = "Managed disk size in GB"  
   type = number
   default = 20
 }
