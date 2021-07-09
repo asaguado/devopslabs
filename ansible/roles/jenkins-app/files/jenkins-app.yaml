@@ -82,13 +82,12 @@ metadata:
   name: jenkins-service
   namespace: jenkins  
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
       nodePort: 30000
-      name: ui
   selector:
     app: jenkins
 
@@ -105,7 +104,6 @@ spec:
     - protocol: TCP
       port: 50000
       targetPort: 50000
-      name: agents
   selector:
     app: jenkins
 
@@ -116,8 +114,8 @@ kind: Ingress
 metadata:
   name: jenkins-ingress
   namespace: jenkins
-  annotations:
-      haproxy.org/path-rewrite: "/"
+  #annotations:
+  #    haproxy.org/path-rewrite: "/"
 spec:
   rules:
   - host: jenkins.bar
