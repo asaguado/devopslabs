@@ -1,0 +1,11 @@
+- name: add kubernetes repo (1/2)
+  copy:
+    src: "{{ item.file }}"
+    dest: "{{ item.path }}"
+  with_items:
+    - { file: 'jenkins-app.yaml', path: '$HOME/apps/jenkins/jenkins-app.yaml'}
+  become: yes    
+
+- name: install jenkins
+  shell: kubectl apply -f $HOME/apps/jenkins/jenkins-app.yaml
+

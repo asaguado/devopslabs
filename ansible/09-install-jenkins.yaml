@@ -6,25 +6,9 @@
 #   - jenkins-service.yaml
 #   - jenkins-ingress.yaml
 #   - jenkins-configmap.yaml
-- hosts: master
+- name: install jenkins
+  hosts: master
   become: yes
-  tasks:
-
-    - name: install namespace
-      shell: kubectl apply -f ../apps/jenkins/jenkins-namespace.yaml
-
-    - name: install storage
-      shell: kubectl apply -f ../apps/jenkins/jenkins-storage.yaml  
- 
-    - name: install deployment
-      shell: kubectl apply -f ../apps/jenkins/jenkins-deployment.yaml
-
-    - name: install service
-      shell: kubectl apply -f ../apps/jenkins/jenkins-service.yaml
-
-    - name: install ingress
-      shell: kubectl apply -f ../apps/jenkins/jenkins-ingress.yaml
-
-    - name: install configmap
-      shell: kubectl apply -f ../apps/jenkins/jenkins-configmap.yaml
-
+  gather_facts: false
+  roles:
+    - jenkins
