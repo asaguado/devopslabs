@@ -113,7 +113,8 @@ metadata:
   name: jenkins-ingress
   namespace: jenkins
   annotations:
-      haproxy.org/path-rewrite: "/"
+      #haproxy.org/path-rewrite: "/"
+      kubernetes.io/ingress.class: "public"
 spec:
   rules:
   - host: jenkins.bar

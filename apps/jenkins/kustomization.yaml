@@ -8,6 +8,8 @@
 # sudo kubectl get pods -n jenkins
 # sudo kubectl get pv,pvc,service,deploy,pods,ingress -n jenkins
 # sudo kubectl delete all --all -n jenkins
+# [root@master ~]# kubectl get pods --namespace=jenkins -o wide
+# [root@master ~]# kubectl get services --namespace=jenkins -o wide
 resources:
   - jenkins-namespace.yaml
   - jenkins-storage.yaml  
