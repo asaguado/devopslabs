@@ -1,3 +1,9 @@
+- name: create a directory if it does not exist
+  file:
+    path: /apps/jenkins
+    state: directory
+    mode: '0755'
+
 - name: copy jenkins file app
   copy:
     src: "{{ item.file }}"
