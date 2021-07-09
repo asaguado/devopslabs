@@ -1,6 +1,6 @@
 - name: create a directory if it does not exist
   file:
-    path: /apps/jenkins
+    path: /home/kubeadmin/apps/jenkins
     state: directory
     mode: '0755'
   become: yes
@@ -10,7 +10,7 @@
     src: "{{ item.file }}"
     dest: "{{ item.path }}"
   with_items:
-    - { file: 'jenkins-app.yaml', path: '$HOME/apps/jenkins/jenkins-app.yaml'}
+    - { file: 'jenkins-app.yaml', path: '/home/kubeadmin/apps/jenkins/jenkins-app.yaml'}
   become: yes
 
 - name: install jenkins
