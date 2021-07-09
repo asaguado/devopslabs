@@ -1,4 +1,4 @@
-- name: add kubernetes repo (1/2)
+- name: copy jenkins file app
   copy:
     src: "{{ item.file }}"
     dest: "{{ item.path }}"
