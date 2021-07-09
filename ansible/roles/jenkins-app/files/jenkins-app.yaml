@@ -82,7 +82,7 @@ metadata:
   name: jenkins-service
   namespace: jenkins  
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8080
