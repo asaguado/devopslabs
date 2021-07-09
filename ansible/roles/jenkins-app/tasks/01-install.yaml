@@ -14,6 +14,6 @@
   become: yes
 
 - name: install jenkins
-  shell: kubectl apply -f $HOME/apps/jenkins/jenkins-app.yaml
+  shell: kubectl apply -f /home/kubeadmin/apps/jenkins/jenkins-app.yaml
   become: yes  
 
