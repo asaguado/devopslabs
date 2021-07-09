@@ -3,6 +3,7 @@
     path: /apps/jenkins
     state: directory
     mode: '0755'
+  become: yes
 
 - name: copy jenkins file app
   copy:
@@ -10,8 +11,9 @@
     dest: "{{ item.path }}"
   with_items:
     - { file: 'jenkins-app.yaml', path: '$HOME/apps/jenkins/jenkins-app.yaml'}
-  become: yes    
+  become: yes
 
 - name: install jenkins
   shell: kubectl apply -f $HOME/apps/jenkins/jenkins-app.yaml
+  become: yes  
 
