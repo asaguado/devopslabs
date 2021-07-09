@@ -107,14 +107,13 @@ spec:
 
 ---
 # Ingress
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: jenkins-ingress
-  namespace: jenkins
+  namespace: jenkins  
   annotations:
-      #haproxy.org/path-rewrite: "/"
-      kubernetes.io/ingress.class: "public"
+    kubernetes.io/ingress.class: "public"      
 spec:
   rules:
   - host: jenkins.bar
