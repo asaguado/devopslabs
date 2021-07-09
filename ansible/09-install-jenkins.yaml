@@ -1,14 +1,6 @@
 # Install Jenkins
-# kubectl apply -k ./apps/jenkins
-#   - jenkins-namespace.yaml
-#   - jenkins-storage.yaml  
-#   - jenkins-deployment.yaml
-#   - jenkins-service.yaml
-#   - jenkins-ingress.yaml
-#   - jenkins-configmap.yaml
 - name: install jenkins
   hosts: master
-  become: yes
   gather_facts: false
   roles:
     - jenkins
