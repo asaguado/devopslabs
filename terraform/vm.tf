@@ -9,7 +9,8 @@ resource "azurerm_linux_virtual_machine" "myVM" {
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
 
-    size                = var.vm_size
+    #ize                = var.vm_size
+    size                = "${ar.vm_size[count.index]}"  
     admin_username      = var.admin_username
     disable_password_authentication = true        
 
